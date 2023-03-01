@@ -44,17 +44,18 @@ class Bomberman{
       }
     }
     
-    if(this.x < 0 + this.size){
-      this.x = 0 + this.size;
+    // if statements stopper player når den rammer muren
+    if(this.x < 0 + Grid.Size){
+      this.x = 0 + Grid.Size;
     }
-    if(this.x > width - (2*this.size)){
-      this.x = width - (2*this.size);
+    if(this.x > width - this.size-Grid.Size){
+      this.x = width - this.size-Grid.Size;
     }
-    if(this.y < 0 + this.size){
-      this.y = 0 + this.size;
+    if(this.y < 0 + Grid.Size){
+      this.y = 0 + Grid.Size;
     }
-    if(this.y > height - (2*this.size)){
-      this.y = height - (2*this.size);
+    if(this.y > height - this.size-Grid.Size){
+      this.y = height - this.size-Grid.Size;
     }
     
   }
