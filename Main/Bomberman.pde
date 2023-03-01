@@ -13,7 +13,7 @@ class Bomberman{
     //Størrelse på player
     this.size = 20;
     //Hastigheden på player
-    this.v = 25;
+    this.v = 2;
   }
   void show(){
     //Bestemmer startplaceringen på player
@@ -22,6 +22,27 @@ class Bomberman{
   }
   
   void update(){
+    rect(this.x,this.y,this.size,this.size);
+    //tjekker om der er en tast der er trykket ned
+    if (keyPressed){
+      //Alle if statements tjekker hvilken tast der bliver trykket på
+      //Afhængig om hvilken vej der bliver trykket trækkes eller lægges hastigheden til enten x eller y koordinatet
+      if(key == 'w' || key == 'W'){
+        this.y = this.y - this.v;
+      }
+      
+      if(key == 's' || key == 'S'){
+        this.y = this.y + this.v;
+      }
+      
+      if(key == 'a' || key == 'A'){
+        this.x = this.x - this.v;
+      }
+      
+      if(key == 'd' || key == 'D'){
+        this.x = this.x + this.v;
+      }
+    }
     
   }
 }
