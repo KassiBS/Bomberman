@@ -1,4 +1,5 @@
 Bomberman Player1 = new Bomberman();
+MakeGrid Grid = new MakeGrid();
 void setup(){
   size(775,325);
   
@@ -11,4 +12,5 @@ void draw(){
   background(18, 201, 67);
   //Opdaterer kondition på player
   Player1.update();
+  Grid.show();
 }
