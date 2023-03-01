@@ -44,5 +44,18 @@ class Bomberman{
       }
     }
     
+    if(this.x < 0 + this.size){
+      this.x = 0 + this.size;
+    }
+    if(this.x > width - (2*this.size)){
+      this.x = width - (2*this.size);
+    }
+    if(this.y < 0 + this.size){
+      this.y = 0 + this.size;
+    }
+    if(this.y > height - (2*this.size)){
+      this.y = height - (2*this.size);
+    }
+    
   }
 }
