@@ -22,6 +22,8 @@ class Bomberman{
   }
   
   void update(){
+    //Note: Har fikset rectMode(CENTER)
+    rectMode(CENTER);
     rect(this.x,this.y,this.size,this.size);
     //tjekker om der er en tast der er trykket ned
     if (keyPressed){
@@ -42,21 +44,6 @@ class Bomberman{
       if(key == 'd' || key == 'D'){
         this.x = this.x + this.v;
       }
-    }
-    
-    // if statements stopper player når den rammer muren
-    if(this.x < 0 + Grid.Size){
-      this.x = 0 + Grid.Size;
-    }
-    if(this.x > width - this.size-Grid.Size){
-      this.x = width - this.size-Grid.Size;
-    }
-    if(this.y < 0 + Grid.Size){
-      this.y = 0 + Grid.Size;
-    }
-    if(this.y > height - this.size-Grid.Size){
-      this.y = height - this.size-Grid.Size;
-    }
-    
+    } 
   }
 }
