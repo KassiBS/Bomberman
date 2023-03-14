@@ -27,7 +27,7 @@ class Collision{
       Player1.y = height - Player1.size/2 - Grid.Size;
     }
     
-<<<<<<< HEAD
+
     
     
     for (int i = 0; i < 5; i++){
@@ -53,6 +53,7 @@ class Collision{
           Player1.y = Grid.Size * this.T - Player1.size/2;
         }    
       }
+
     }
     else if(Player1.x - Player1.size/2 < Grid.Size * this.B && Player1.x - Player1.size/2 > Grid.Size * this.T && Player1.y + Player1.size/2 > Grid.Size * this.L && Player1.y - Player1.size/2 < Grid.Size * this.R){
       if (keyPressed){
@@ -69,13 +70,8 @@ class Collision{
           Player1.y = Grid.Size * this.T - Player1.size/2;
         }    
       } 
-=======
-    if(Player1.x + Player1.size/2 > Grid.Size * 2 && Player1.x + Player1.size/2 < Grid.Size * 3 && Player1.y + Player1.size/2 > Grid.Size * 2 && Player1.y - Player1.size/2 < Grid.Size * 3){
-      Player1.x = Grid.Size * 2 - Player1.size/2 ;
-    }
-    if(Player1.x - Player1.size/2 < Grid.Size * 3 && Player1.x - Player1.size/2 > Grid.Size * 2 && Player1.y + Player1.size/2 > Grid.Size * 2 && Player1.y - Player1.size/2 < Grid.Size * 3){
-      Player1.x = Grid.Size * 3 + Player1.size/2 ;
->>>>>>> parent of 040d49a (Collision for first block)
+
+    
     }
     
     this.L += 2;
