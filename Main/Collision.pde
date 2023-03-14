@@ -18,11 +18,39 @@ class Collision{
       Player1.y = height - Player1.size/2 - Grid.Size;
     }
     
+    
+    
     if(Player1.x + Player1.size/2 > Grid.Size * 2 && Player1.x + Player1.size/2 < Grid.Size * 3 && Player1.y + Player1.size/2 > Grid.Size * 2 && Player1.y - Player1.size/2 < Grid.Size * 3){
-      Player1.x = Grid.Size * 2 - Player1.size/2 ;
+      if (keyPressed){
+        if(key == 'w' || key == 'W'){
+          Player1.y = Grid.Size * 3 + Player1.size/2;
+        }
+        else if(key == 'a' || key == 'A'){
+          Player1.x = Grid.Size * 3 + Player1.size/2;
+        }
+        else if(key == 'd' || key == 'D'){
+          Player1.x = Grid.Size * 2 - Player1.size/2;
+        }
+        else if(key == 's' || key == 'S'){
+          Player1.y = Grid.Size * 2 - Player1.size/2;
+        }    
+      }
     }
     if(Player1.x - Player1.size/2 < Grid.Size * 3 && Player1.x - Player1.size/2 > Grid.Size * 2 && Player1.y + Player1.size/2 > Grid.Size * 2 && Player1.y - Player1.size/2 < Grid.Size * 3){
-      Player1.x = Grid.Size * 3 + Player1.size/2 ;
+      if (keyPressed){
+        if(key == 'w' || key == 'W'){
+          Player1.y = Grid.Size * 3 + Player1.size/2;
+        }
+        else if(key == 'a' || key == 'A'){
+          Player1.x = Grid.Size * 3 + Player1.size/2;
+        }
+        else if(key == 'd' || key == 'D'){
+          Player1.x = Grid.Size * 2 - Player1.size/2;
+        }
+        else if(key == 's' || key == 'S'){
+          Player1.y = Grid.Size * 2 - Player1.size/2;
+        }    
+      }
     }
   }
 }
