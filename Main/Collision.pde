@@ -72,6 +72,7 @@ class Collision{
       } 
 
     
+
     }
     
     this.L += 2;
