@@ -70,14 +70,12 @@ class Collision{
       } 
     }
     
-    
     this.L += 2;
     this.R += 2;
         
       }  
       this.L = 2;
       this.R = 3;
-    
     }
     
     
@@ -85,8 +83,5 @@ class Collision{
     this.B = 1;
     this.L = 2;
     this.R = 3;
-    
-    
-    
   }
 }
