@@ -52,5 +52,9 @@ class Collision{
         }    
       }
     }
+    
+    if (Player1.x > 300){
+      Player1.health = false;
+    }
   }
 }
