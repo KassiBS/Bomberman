@@ -5,6 +5,8 @@ class Bomberman{
   float size;
   float v;
   
+  
+  
   Bomberman(){
     //Beskriver placeringen på player
     this.x = 37.5;
