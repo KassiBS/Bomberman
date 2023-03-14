@@ -19,10 +19,10 @@ class Collision{
     }
     
     if(Player1.x + Player1.size/2 > Grid.Size * 2 && Player1.x + Player1.size/2 < Grid.Size * 3 && Player1.y + Player1.size/2 > Grid.Size * 2 && Player1.y - Player1.size/2 < Grid.Size * 3){
-      print("Venstre");
+      Player1.x = Grid.Size * 2 - Player1.size/2 ;
     }
     if(Player1.x - Player1.size/2 < Grid.Size * 3 && Player1.x - Player1.size/2 > Grid.Size * 2 && Player1.y + Player1.size/2 > Grid.Size * 2 && Player1.y - Player1.size/2 < Grid.Size * 3){
-      print("Højre");
+      Player1.x = Grid.Size * 3 + Player1.size/2 ;
     }
   }
 }
