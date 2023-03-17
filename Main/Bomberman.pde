@@ -16,7 +16,7 @@ class Bomberman{
     //Størrelse på player
     this.size = 20;
     //Hastigheden på player
-    this.v = 2;
+    this.v = 1;
   }
   void show(){
     //Bestemmer startplaceringen på player
