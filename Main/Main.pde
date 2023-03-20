@@ -2,7 +2,6 @@ Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
 ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
-int bombNr = 0;
 
 void setup(){
   size(775,325);
@@ -19,10 +18,21 @@ void draw(){
   Kollider.check();
   if (keyPressed){
     if(key == 'c'){
-     Bomb temp = Bombe.get(bombNr);
-     temp.update();
-     bombNr =+ 1;
-     print(bombNr);
+           
     }
   }
+//for-lykke bliver ved med at køre helt til at den har fyldt arrayet ud
+  for(int i = 0; i < Bombe.size(); i++){
+     Bomb temp = Bombe.get(i);
+     temp.spawn();
+     //if statement tjekker om bombe er exploderet. Hvis den er det fjerner den bomben 
+     if(temp.detonate == true){
+       Bombe.remove(i);
+     }
+  }
+    
+}
+//funktion tilføjer en ny instans af en bombe, når musen bliver trykket
+void mouseReleased(){
+  Bombe.add(new Bomb());
 }
