@@ -8,8 +8,8 @@ class Bomb{
   int timeStamp;
   
   Bomb(){
-    this.x = 87.5;
-    this.y = 87.5;
+    this.x = Player1.x;
+    this.y = Player1.y;
     // size beskriver størrelsen på bomben
     this.size = int(Grid.Size);
     // radius beskriver størrelsen på eksplosionen
