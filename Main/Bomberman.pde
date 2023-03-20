@@ -29,6 +29,7 @@ class Bomberman{
     if(health == true){
       //Note: Har fikset rectMode(CENTER)
       rectMode(CENTER);
+      fill(150, 234, 255);
       rect(this.x,this.y,this.size,this.size);
       //tjekker om der er en tast der er trykket ned
       if (keyPressed){
