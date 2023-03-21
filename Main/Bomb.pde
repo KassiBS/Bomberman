@@ -6,6 +6,7 @@ class Bomb{
   boolean detonate;
   int timeStamp;
   int interval;
+  boolean bombIsThere = false;
   
   Bomb(){
     this.x = Player1.x;
@@ -20,7 +21,6 @@ class Bomb{
   }
   
   void spawn(){
-    ; 
     //if statement tjekker om bomben er sprunget
       fill(0);
       circle(this.x,this.y,this.size);
@@ -30,6 +30,7 @@ class Bomb{
       detonate = true;
       timeStamp = millis();
     }
+    
     
   }
   

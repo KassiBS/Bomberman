@@ -5,7 +5,8 @@ class Bomberman{
   float size;
   float v;
   boolean health = true;
-  
+  int bombNr;
+  int bombPlaced;
   
   
   Bomberman(){
@@ -17,6 +18,10 @@ class Bomberman{
     this.size = 20;
     //Hastigheden på player
     this.v = 1;
+    //Hvor meget bomber bomberman har plads til
+    this.bombNr = 1;
+    //hvor mange bomber bomberman har placeret
+    this.bombPlaced = 0;
   }
   void show(){
     //Bestemmer startplaceringen på player
@@ -25,6 +30,8 @@ class Bomberman{
   }
   
   void update(){
+    //print(this.x);
+    //print(" "+this.y);
     //tjekker om health er lig med true
     if(health == true){
       //Note: Har fikset rectMode(CENTER)
