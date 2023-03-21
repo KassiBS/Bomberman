@@ -6,7 +6,6 @@ class Bomb{
   boolean detonate;
   int timeStamp;
   int interval;
-  boolean bombIsThere = false;
   
   Bomb(){
     this.x = Player1.x;
@@ -30,8 +29,21 @@ class Bomb{
       detonate = true;
       timeStamp = millis();
     }
-    
-    
+    //If statements tjekker hvilken tile player er tættest på og spawner en bombe på den tile
+      for(int i = 0; i<29; i++){
+        for(int j = 0; j<11; j++){
+           if(this.x > Grid.Size * (1+i)){
+            if(this.x < Grid.Size * (2+i)){
+              if(this.y > Grid.Size * (1+j)){
+                if(this.y < Grid.Size * (2+j)){
+                  this.x = Grid.Size * (i+1) + Grid.Size/2;
+                  this.y = Grid.Size * (j+1) + Grid.Size/2;
+                }
+              }
+            }
+           }
+          }
+       }
   }
   
 }
