@@ -6,6 +6,8 @@ class Bomb{
   boolean detonate;
   int timeStamp;
   int interval;
+  int nyInterval;
+  
   
   Bomb(){
     this.x = Player1.x;
@@ -14,9 +16,10 @@ class Bomb{
     this.size = int(Grid.Size);
     // radius beskriver størrelsen på eksplosionen
     this.radius = 1;
-    timeStamp = millis();
-    interval = 2000;
-    detonate = false;
+    this.timeStamp = millis();
+    this.interval = 2000;
+    this.nyInterval = 2000;
+    this.detonate = false;
   }
   
   void spawn(){
@@ -44,6 +47,13 @@ class Bomb{
            }
           }
        }
+    if(detonate == true){
+      this.timeStamp = millis();
+      print("BANG");
+      if(millis() - this.timeStamp > this.interval) {
+        print("færdig");
+      }     
+    }
   }
   
 }
