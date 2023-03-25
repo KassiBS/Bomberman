@@ -4,9 +4,11 @@ class Bomb{
   int size;
   int radius;
   boolean detonate;
+  boolean exploded = false;
   int timeStamp;
   int interval;
   int nyInterval;
+  int nyTimeStamp;
   
   
   Bomb(){
@@ -18,7 +20,7 @@ class Bomb{
     this.radius = 1;
     this.timeStamp = millis();
     this.interval = 2000;
-    this.nyInterval = 2000;
+    this.nyInterval = 500;
     this.detonate = false;
   }
   
@@ -47,11 +49,16 @@ class Bomb{
            }
           }
        }
-    if(detonate == true){
-      this.timeStamp = millis();
+    if(this.detonate == true){
+      int temp1 = 0;
+      if(temp1 < 1){
+        this.nyTimeStamp = millis();
+        print(this.nyTimeStamp);
+      }
       print("BANG");
-      if(millis() - this.timeStamp > this.interval) {
+      if(millis() - this.nyTimeStamp > this.nyInterval) {
         print("færdig");
+        this.exploded = true;
       }     
     }
   }
