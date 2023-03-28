@@ -25,7 +25,7 @@ class Collision{
         if(Player1.x + Player1.size/2 > Grid.Size * (2 + i) && Player1.x + Player1.size/2 < Grid.Size * (3 + i) && Player1.y + Player1.size/2 > Grid.Size * (2 + j) && Player1.y - Player1.size/2 < Grid.Size * (3 + j)){
       if (keyPressed){
         if(key == 'w' || key == 'W'){
-          Player1.y = Grid.Size * (3 + j) + Player1.size/2;
+          Player1.y = Grid.Size * (3+j ) + Player1.size/2;
         }
         else if(key == 'a' || key == 'A'){
           Player1.x = Grid.Size * (3 + i) + Player1.size/2;
@@ -34,7 +34,7 @@ class Collision{
           Player1.x = Grid.Size * (2 + i) - Player1.size/2;
         }
         else if(key == 's' || key == 'S'){
-          Player1.y = Grid.Size * (2 + j) - Player1.size/2;
+          Player1.y = Grid.Size * (2+ j) - Player1.size/2;
         }    
       }
 

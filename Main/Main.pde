@@ -10,6 +10,7 @@ void setup(){
 }
 
 void draw(){
+  rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
   Grid.show();
