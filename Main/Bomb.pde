@@ -4,10 +4,12 @@ class Bomb{
   int size;
   int radius;
   boolean detonate;
+  boolean exploded = false;
   int timeStamp;
   int interval;
   int nyInterval;
-  
+  int nyTimeStamp;
+  int temp1 = 0;
   
   Bomb(){
     this.x = Player1.x;
@@ -18,7 +20,7 @@ class Bomb{
     this.radius = 1;
     this.timeStamp = millis();
     this.interval = 2000;
-    this.nyInterval = 2000;
+    this.nyInterval = 500;
     this.detonate = false;
   }
   
@@ -47,11 +49,22 @@ class Bomb{
            }
           }
        }
-    if(detonate == true){
-      this.timeStamp = millis();
-      print("BANG");
-      if(millis() - this.timeStamp > this.interval) {
-        print("færdig");
+    //if statement tjekker om bomben er detoneret
+    if(this.detonate == true){
+      //if statement tjekker om temp er større end 1, det gør at den kun kører 1 gang
+      if(temp1 < 1){
+        this.nyTimeStamp = millis();
+        //print(this.nyTimeStamp);
+        temp1 = 1;
+        //print(temp1);
+        
+      }
+      rect(this.x,this.y,this.size,this.size);
+      //print(" BANG ");
+      //if statement tjekker om tiden er gået og de-spawner bomben
+      if(millis() - this.nyTimeStamp > this.nyInterval) {
+        //print("færdig");
+        this.exploded = true;
       }     
     }
   }

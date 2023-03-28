@@ -24,7 +24,7 @@ void draw(){
      temp.spawn();
      //print(temp.x +"   "+ temp.y);
      //if statement tjekker om bombe er exploderet. Hvis den er det fjerner den bomben 
-     if(temp.detonate == true){
+     if(temp.exploded == true){
        Bombe.remove(i);
        //Der bliver trukket 1 fra antal bomber placeret
        Player1.bombPlaced -= 1;
