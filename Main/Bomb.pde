@@ -49,18 +49,21 @@ class Bomb{
            }
           }
        }
+    //if statement tjekker om bomben er detoneret
     if(this.detonate == true){
+      //if statement tjekker om temp er større end 1, det gør at den kun kører 1 gang
       if(temp1 < 1){
         this.nyTimeStamp = millis();
         //print(this.nyTimeStamp);
         temp1 = 1;
-        print(temp1);
+        //print(temp1);
         
       }
       rect(this.x,this.y,this.size,this.size);
-      print(" BANG ");
+      //print(" BANG ");
+      //if statement tjekker om tiden er gået og de-spawner bomben
       if(millis() - this.nyTimeStamp > this.nyInterval) {
-        print("færdig");
+        //print("færdig");
         this.exploded = true;
       }     
     }
