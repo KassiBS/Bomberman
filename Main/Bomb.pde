@@ -9,7 +9,7 @@ class Bomb{
   int interval;
   int nyInterval;
   int nyTimeStamp;
-  
+  int temp1 = 0;
   
   Bomb(){
     this.x = Player1.x;
@@ -50,12 +50,15 @@ class Bomb{
           }
        }
     if(this.detonate == true){
-      int temp1 = 0;
       if(temp1 < 1){
         this.nyTimeStamp = millis();
-        print(this.nyTimeStamp);
+        //print(this.nyTimeStamp);
+        temp1 = 1;
+        print(temp1);
+        
       }
-      print("BANG");
+      rect(this.x,this.y,this.size,this.size);
+      print(" BANG ");
       if(millis() - this.nyTimeStamp > this.nyInterval) {
         print("færdig");
         this.exploded = true;
