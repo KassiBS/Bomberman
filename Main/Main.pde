@@ -2,6 +2,7 @@ Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
 ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
+Bricks CreateBricks = new Bricks();
 
 void setup(){
   size(775,325);
@@ -13,6 +14,7 @@ void draw(){
   //Baggrundsfarve er grøn
   background(18, 201, 67);
   Grid.show();
+  CreateBricks.show();
   //Opdaterer kondition på player
   Player1.update();
   Kollider.check();
