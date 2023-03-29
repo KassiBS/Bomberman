@@ -60,10 +60,14 @@ class Collision{
     }
    
    //Collision for explosion
+   //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
       Bomb temp = Bombe.get(i);
-      if (temp.x + temp.radiusL  > Grid.Size && temp.x  < Grid.Size * 2){
-       temp.radiusL = 0;
+      // if satement tjekker om explosions radius går ud over væg
+      if (temp.x - temp.radiusL * Grid.Size < Grid.Size ){
+       // bombe radius bliver trukket fra hvor meget den går ud over væggen
+       print(ExpUdOverVæg(int(temp.x),int(temp.radiusL)));
+       
       }
       if (temp.x < width - Grid.Size && temp.x > width - Grid.Size * 2){
        temp.radiusR = 0;
@@ -79,4 +83,11 @@ class Collision{
    }
     
   }
+}
+
+//Funktion finder ud af hvor meget bomben går ud over væggen
+int ExpUdOverVæg(int BombPos, int radius){
+  int ExpOvVæg;
+  ExpOvVæg = radius - (((BombPos - int(Grid.Size/2)) - int(Grid.Size))/int(Grid.Size));
+  return ExpOvVæg;
 }
