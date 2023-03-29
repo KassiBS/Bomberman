@@ -9,6 +9,8 @@ class Collision{
   int blockColorT;
   int blockColorD;
   
+  int plade = -15546045;
+  
   Collision(){
     
   }
@@ -23,19 +25,19 @@ class Collision{
     //if statement tjekker om tastaturet er trykket på
     if(keyPressed){
       //tjekker om spiller rammer en block når op tasten bliver trykket
-      if(key == 'w' && colorTR != -15546045|| key == 'w' && colorTL != -15546045 ){
+      if(key == 'w' && colorTR != this.plade|| key == 'w' && colorTL != this.plade ){
         Player1.y +=1;
       }
       //tjekker om spiller rammer en block når ned tasten bliver trykket
-      if(key == 's' && colorDR != -15546045|| key == 's' && colorDL != -15546045 ){
+      if(key == 's' && colorDR != this.plade| key == 's' && colorDL != this.plade ){
         Player1.y -=1;
       }
       //tjekker om spiller rammer en block når venstre tasten bliver trykket
-      if(key == 'a' && colorTL != -15546045|| key == 'a' && colorDL != -15546045 ){
+      if(key == 'a' && colorTL != this.plade|| key == 'a' && colorDL != this.plade ){
         Player1.x +=1;
       }
       //tjekker om spiller rammer en block når højre tasten bliver trykket
-      if(key == 'd' && colorTR != -15546045|| key == 'd' && colorDR != -15546045 ){
+      if(key == 'd' && colorTR != this.plade|| key == 'd' && colorDR != this.plade ){
         Player1.x -=1;
       }
     }
