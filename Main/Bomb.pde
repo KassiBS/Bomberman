@@ -2,8 +2,11 @@ class Bomb{
   float x;
   float y;
   int size;
-  int radiusX;
-  int radiusY;
+  int radius;
+  int radiusL;
+  int radiusR;
+  int radiusT;
+  int radiusD;
   boolean detonate;
   boolean exploded = false;
   int timeStamp;
@@ -18,8 +21,12 @@ class Bomb{
     // size beskriver størrelsen på bomben
     this.size = int(Grid.Size);
     // radius beskriver størrelsen på eksplosionen
-    this.radiusX = 3;
-    this.radiusY = 3;
+    this.radius = 1;
+    //radius for de individuelle sider hvor, R = right, L = left, T = top, D = down
+    this.radiusR = this.radius;
+    this.radiusL = this.radius;
+    this.radiusT = this.radius;
+    this.radiusD = this.radius;
     this.timeStamp = millis();
     this.interval = 2000;
     this.nyInterval = 500;
@@ -63,12 +70,19 @@ class Bomb{
       }
       noStroke();
       fill(245, 146, 76);
+      
       //laver blast radius for midten
       rect(this.x,this.y,this.size,this.size);
-      //laver siderne af blast radius for x-aksen
-      rect(this.x,this.y,this.size * this.radiusX,this.size);
-      //laver siderne af blast radius for y-aksen
-      rect(this.x,this.y,this.size ,this.size* this.radiusY);
+      //laver siderne af blast radius for x-aksen til højre
+      rectMode(CORNER);
+      rect(this.x + this.size/2,this.y- this.size/2,this.size * this.radiusR,this.size);
+      //laver siderne af blast radius for x-aksen til venstre
+      rect( this.x - this.size/2,this.y - this.size/2,-this.size * this.radiusL,this.size);
+      //laver siderne af blast radius for y-aksen ned
+      rect(this.x - this.size/2,this.y+ this.size/2,this.size ,this.size* this.radiusD);
+      //laver siderne af blast radius for x-aksen til venstre
+      rect( this.x - this.size/2,this.y - this.size/2,this.size ,-this.size*this.radiusT);
+      
       stroke(0);
       //print(" BANG ");
       //if statement tjekker om tiden er gået og de-spawner bomben
