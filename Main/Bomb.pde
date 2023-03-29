@@ -21,7 +21,7 @@ class Bomb{
     // size beskriver størrelsen på bomben
     this.size = int(Grid.Size);
     // radius beskriver størrelsen på eksplosionen
-    this.radius = 3;
+    this.radius = 1;
     //radius for de individuelle sider hvor, R = right, L = left, T = top, D = down
     this.radiusR = this.radius;
     this.radiusL = this.radius;

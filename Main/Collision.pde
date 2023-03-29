@@ -60,7 +60,23 @@ class Collision{
     }
    
    //Collision for explosion
-   
+   for(int i = 0; i < Bombe.size(); i++){
+      Bomb temp = Bombe.get(i);
+      if (temp.x + temp.radiusL  > Grid.Size && temp.x  < Grid.Size * 2){
+       temp.radiusL = 0;
+      }
+      if (temp.x < width - Grid.Size && temp.x > width - Grid.Size * 2){
+       temp.radiusR = 0;
+       }
+     
+      if (temp.y > Grid.Size && temp.y < Grid.Size * 2){
+       temp.radiusT = 0;
+      }
+      if (temp.y < height - Grid.Size && temp.y > height - Grid.Size * 2){
+       temp.radiusD = 0;
+      }
+     
+   }
     
   }
 }
