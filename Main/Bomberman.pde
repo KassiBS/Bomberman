@@ -19,7 +19,7 @@ class Bomberman{
     //Hastigheden på player
     this.v = 1;
     //Hvor meget bomber bomberman har plads til
-    this.bombNr = 3;
+    this.bombNr = 1;
     //hvor mange bomber bomberman har placeret
     this.bombPlaced = 0;
   }

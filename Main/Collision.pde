@@ -4,6 +4,7 @@ class Collision{
     
   }
   void check(){
+  //COLLISION FOR GRIDS
   // if statements stopper player når den rammer muren
   //Note: Har fikset rectMode(CENTER)
     if(Player1.x < Player1.size/2 + Grid.Size){
@@ -57,7 +58,9 @@ class Collision{
     }
       }
     }
-    
+   
+   //Collision for explosion
+   
     
   }
 }
