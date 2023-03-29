@@ -13,6 +13,7 @@ class Collision{
     
   }
   void check(){
+    //COLLISION FOR PLAYER
     //Farven på hjørnerne
     colorDL = get(int(Player1.x - Player1.size/2),int(Player1.y + Player1.size/2));
     colorDR = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
