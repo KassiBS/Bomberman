@@ -2,6 +2,7 @@ class Bomb{
   float x;
   float y;
   int size;
+  int radiusMax;
   int radius;
   int radiusL;
   int radiusR;
@@ -20,13 +21,13 @@ class Bomb{
     this.y = Player1.y;
     // size beskriver størrelsen på bomben
     this.size = int(Grid.Size);
-    // radius beskriver størrelsen på eksplosionen
-    this.radius = 3;
+    // radiusMax beskriver den maximale størrelse på explosionen
+    this.radiusMax = 1;
     //radius for de individuelle sider hvor, R = right, L = left, T = top, D = down
-    this.radiusR = this.radius;
-    this.radiusL = this.radius;
-    this.radiusT = this.radius;
-    this.radiusD = this.radius;
+    this.radiusR = 0;
+    this.radiusL = 0;
+    this.radiusT = 0;
+    this.radiusD = 0;
     this.timeStamp = millis();
     this.interval = 2000;
     this.nyInterval = 500;

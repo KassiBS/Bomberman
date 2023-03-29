@@ -39,10 +39,10 @@ void keyPressed(){
     //if statement tjekker om der er færre bomber placeret en det maximumme antal bomber der kan placeres
       if(Player1.bombPlaced < Player1.bombNr){
       Bombe.add(new Bomb());
-      //print("hej");
+
       //Der bliver lagt 1 til antal bomber placeret
       Player1.bombPlaced += 1;
-      print("hej");
+
      } 
   }
 }

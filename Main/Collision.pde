@@ -1,5 +1,8 @@
 class Collision{
-  
+  int blockColorR;
+  int blockColorL;
+  int blockColorT;
+  int blockColorD;
   Collision(){
     
   }
@@ -59,35 +62,50 @@ class Collision{
       }
     }
    
-   //Collision for explosion
+   //COLLISION FOR EXPLOSION
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
       Bomb temp = Bombe.get(i);
-      // if satement tjekker om explosions radius går ud over væg
-      if (temp.x - temp.radiusL * Grid.Size < Grid.Size ){
-       // bombe radius bliver trukket fra hvor meget den går ud over væggen
-       print(ExpUdOverVæg(int(temp.x),int(temp.radiusL)));
-       
+      //if statement tjekker om radius er mindre end max radius 
+      if(temp.radiusR < temp.radiusMax){
+        blockColorR = get(int(temp.x + Grid.Size + temp.radiusR * Grid.Size), int(temp.y));
+        //if statement tjekker om farven er grøn
+        if(blockColorR == -15546045){
+          temp.radiusR += 1;
+        }
       }
-      if (temp.x < width - Grid.Size && temp.x > width - Grid.Size * 2){
-       temp.radiusR = 0;
-       }
-     
-      if (temp.y > Grid.Size && temp.y < Grid.Size * 2){
-       temp.radiusT = 0;
+      //if statement tjekker om radius er mindre end max radius 
+      if(temp.radiusL < temp.radiusMax){
+        blockColorL = get(int(temp.x - Grid.Size - temp.radiusL * Grid.Size), int(temp.y));
+        //if statement tjekker om farven er grøn
+        if(blockColorL == -15546045){
+          temp.radiusL += 1;
+        }
       }
-      if (temp.y < height - Grid.Size && temp.y > height - Grid.Size * 2){
-       temp.radiusD = 0;
+      //if statement tjekker om radius er mindre end max radius 
+      if(temp.radiusD < temp.radiusMax){
+        blockColorD = get(int(temp.x), int(temp.y + Grid.Size + temp.radiusD * Grid.Size));
+        //if statement tjekker om farven er grøn
+        if(blockColorD == -15546045){
+          temp.radiusD += 1;
+        }
       }
-     
+      //if statement tjekker om radius er mindre end max radius 
+      if(temp.radiusT < temp.radiusMax){
+        blockColorT= get(int(temp.x), int(temp.y - Grid.Size - temp.radiusT * Grid.Size));
+        //if statement tjekker om farven er grøn
+        if(blockColorT == -15546045){
+          temp.radiusT += 1;
+        }
+      }
    }
-    
   }
 }
 
 //Funktion finder ud af hvor meget bomben går ud over væggen
-int ExpUdOverVæg(int BombPos, int radius){
+int ExpUdOverVæg(int bombPos, int radius){
   int ExpOvVæg;
-  ExpOvVæg = radius - (((BombPos - int(Grid.Size/2)) - int(Grid.Size))/int(Grid.Size));
+  print(bombPos);
+  ExpOvVæg = radius - (((bombPos - int(Grid.Size/2)) - int(Grid.Size))/int(Grid.Size));
   return ExpOvVæg;
 }
