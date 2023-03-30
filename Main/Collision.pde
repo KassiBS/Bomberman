@@ -4,6 +4,11 @@ class Collision{
   int colorTR;
   int colorTL;
   
+  int colorD;
+  int colorT;
+  int colorR;
+  int colorL;
+  
   int blockColorR;
   int blockColorL;
   int blockColorT;
@@ -80,11 +85,35 @@ class Collision{
       }
    }
   }
-}
-
-void bombCheck(){
+  
+  void bombCheck(){
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
       Bomb temp = Bombe.get(i);
-   }
+      colorD = get(int(Player1.x),int(Player1.y + Player1.size/2));
+      colorT = get(int(Player1.x),int(Player1.y - Player1.size/2));
+      colorL = get(int(Player1.x - Player1.size/2),int(Player1.y));
+      colorR = get(int(Player1.x + Player1.size/2),int(Player1.y));
+      if(Player1.x + Player1.size/2 < temp.x - temp.size/2 || Player1.x - Player1.size/2 > temp.x + temp.size/2||Player1.y + Player1.size/2 < temp.y - temp.size/2 || Player1.y - Player1.size/2 > temp.y + temp.size/2){
+        if(keyPressed){
+        //tjekker om spiller rammer en bombe når op tasten bliver trykket
+        if(key == 'w' && colorT != this.pladeFarve){
+          Player1.y +=1;
+         }
+        //tjekker om spiller rammer en bombe når ned tasten bliver trykket
+        if(key == 's' && colorD != this.pladeFarve){
+          Player1.y -=1;
+        }
+        //tjekker om spiller rammer en bombe når venstre tasten bliver trykket
+        if(key == 'a' && colorL != this.pladeFarve){
+          Player1.x +=1;
+        }
+        //tjekker om spiller rammer en bombe når højre tasten bliver trykket
+        if(key == 'd' && colorR != this.pladeFarve){
+          Player1.x -=1;
+        }
+      }
+     }
+    }
+  }
 }
