@@ -9,7 +9,8 @@ class Collision{
   int blockColorT;
   int blockColorD;
   
-  int plade = -15546045;
+  int pladeFarve = -15546045;
+  int bombeFarve = -1433747;
   
   Collision(){
     
@@ -21,23 +22,22 @@ class Collision{
     colorDR = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
     colorTL = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
     colorTR = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
-    
     //if statement tjekker om tastaturet er trykket på
     if(keyPressed){
       //tjekker om spiller rammer en block når op tasten bliver trykket
-      if(key == 'w' && colorTR != this.plade|| key == 'w' && colorTL != this.plade ){
+      if(key == 'w' && colorTR != this.pladeFarve|| key == 'w' && colorTL != this.pladeFarve ){
         Player1.y +=1;
       }
       //tjekker om spiller rammer en block når ned tasten bliver trykket
-      if(key == 's' && colorDR != this.plade| key == 's' && colorDL != this.plade ){
+      if(key == 's' && colorDR != this.pladeFarve|| key == 's' && colorDL != this.pladeFarve ){
         Player1.y -=1;
       }
       //tjekker om spiller rammer en block når venstre tasten bliver trykket
-      if(key == 'a' && colorTL != this.plade|| key == 'a' && colorDL != this.plade ){
+      if(key == 'a' && colorTL != this.pladeFarve|| key == 'a' && colorDL != this.pladeFarve ){
         Player1.x +=1;
       }
       //tjekker om spiller rammer en block når højre tasten bliver trykket
-      if(key == 'd' && colorTR != this.plade|| key == 'd' && colorDR != this.plade ){
+      if(key == 'd' && colorTR != this.pladeFarve|| key == 'd' && colorDR != this.pladeFarve ){
         Player1.x -=1;
       }
     }
@@ -50,7 +50,7 @@ class Collision{
       if(temp.radiusR < temp.radiusMax){
         blockColorR = get(int(temp.x + Grid.Size + temp.radiusR * Grid.Size), int(temp.y));
         //if statement tjekker om farven er grøn
-        if(blockColorR == -15546045){
+        if(blockColorR == pladeFarve){
           temp.radiusR += 1;
         }
       }
@@ -58,7 +58,7 @@ class Collision{
       if(temp.radiusL < temp.radiusMax){
         blockColorL = get(int(temp.x - Grid.Size - temp.radiusL * Grid.Size), int(temp.y));
         //if statement tjekker om farven er grøn
-        if(blockColorL == -15546045){
+        if(blockColorL == pladeFarve){
           temp.radiusL += 1;
         }
       }
@@ -66,7 +66,7 @@ class Collision{
       if(temp.radiusD < temp.radiusMax){
         blockColorD = get(int(temp.x), int(temp.y + Grid.Size + temp.radiusD * Grid.Size));
         //if statement tjekker om farven er grøn
-        if(blockColorD == -15546045){
+        if(blockColorD == pladeFarve){
           temp.radiusD += 1;
         }
       }
@@ -74,10 +74,17 @@ class Collision{
       if(temp.radiusT < temp.radiusMax){
         blockColorT= get(int(temp.x), int(temp.y - Grid.Size - temp.radiusT * Grid.Size));
         //if statement tjekker om farven er grøn
-        if(blockColorT == -15546045){
+        if(blockColorT == pladeFarve){
           temp.radiusT += 1;
         }
       }
    }
   }
+}
+
+void bombCheck(){
+   //forlykke henter bombe instans nummer i
+   for(int i = 0; i < Bombe.size(); i++){
+      Bomb temp = Bombe.get(i);
+   }
 }

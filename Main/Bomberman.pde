@@ -7,7 +7,7 @@ class Bomberman{
   boolean health = true;
   int bombNr;
   int bombPlaced;
-  boolean hold = true;
+
   
   Bomberman(){
     //Beskriver placeringen på player

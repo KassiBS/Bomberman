@@ -31,6 +31,7 @@ void draw(){
        Player1.bombPlaced -= 1;
      }
   }
+  
 }
 
 void keyPressed(){
