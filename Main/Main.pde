@@ -33,6 +33,7 @@ void draw(){
   }
   Kollider.bombCheck();
   
+  
 }
 
 void keyPressed(){

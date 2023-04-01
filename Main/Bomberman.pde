@@ -32,9 +32,8 @@ class Bomberman{
   void update(){
     //print(this.x);
     //print(" "+this.y);
-    //tjekker om health er lig med true
-    if(health == true){
       //Note: Har fikset rectMode(CENTER)
+    if (Player1.health == false){
       rectMode(CENTER);
       fill(150, 234, 255);
       noStroke();

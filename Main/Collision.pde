@@ -4,6 +4,11 @@ class Collision{
   int colorTR;
   int colorTL;
   
+  int colorDR2;
+  int colorDL2;
+  int colorTR2;
+  int colorTL2;
+  
   int colorD;
   int colorT;
   int colorR;
@@ -16,6 +21,7 @@ class Collision{
   
   int pladeFarve = -15546045;
   int bombeFarve = -1433747;
+  int explosionsFarve = -68344;
   
   Collision(){
     
@@ -84,9 +90,11 @@ class Collision{
         }
       }
    }
+
   }
   
-  void bombCheck(){
+void bombCheck(){
+   //COLLISION MELLEM BOMBE OG PLAYER
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
       Bomb temp = Bombe.get(i);
@@ -115,5 +123,14 @@ class Collision{
       }
      }
     }
+   //COLLISION MELLEM EKSPLOSION OG PLAYER
+   colorDL2 = get(int(Player1.x - Player1.size/2),int(Player1.y + Player1.size/2));
+   colorDR2 = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
+   colorTL2 = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
+   colorTR2 = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
+   print(colorDL2);
+   if(colorTL2 < bombeFarve){
+     Player1.health = false;
+   }
   }
 }
