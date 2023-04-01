@@ -4,11 +4,6 @@ class Collision{
   int colorTR;
   int colorTL;
   
-  int colorDR2;
-  int colorDL2;
-  int colorTR2;
-  int colorTL2;
-  
   int colorD;
   int colorT;
   int colorR;
@@ -22,6 +17,7 @@ class Collision{
   int pladeFarve = -15546045;
   int bombeFarve = -1433747;
   int explosionsFarve = -68344;
+  int valcomFarve = -1013485;
   
   Collision(){
     
@@ -98,40 +94,39 @@ void bombCheck(){
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
       Bomb temp = Bombe.get(i);
-      colorD = get(int(Player1.x),int(Player1.y + Player1.size/2));
-      colorT = get(int(Player1.x),int(Player1.y - Player1.size/2));
-      colorL = get(int(Player1.x - Player1.size/2),int(Player1.y));
-      colorR = get(int(Player1.x + Player1.size/2),int(Player1.y));
+      
       if(Player1.x + Player1.size/2 < temp.x - temp.size/2 || Player1.x - Player1.size/2 > temp.x + temp.size/2||Player1.y + Player1.size/2 < temp.y - temp.size/2 || Player1.y - Player1.size/2 > temp.y + temp.size/2){
         if(keyPressed){
         //tjekker om spiller rammer en bombe når op tasten bliver trykket
-        if(key == 'w' && colorT != this.pladeFarve){
+        if(key == 'w' && Player1.colorT != this.pladeFarve){
           Player1.y +=1;
          }
         //tjekker om spiller rammer en bombe når ned tasten bliver trykket
-        if(key == 's' && colorD != this.pladeFarve){
+        if(key == 's' && Player1.colorD != this.pladeFarve){
           Player1.y -=1;
         }
         //tjekker om spiller rammer en bombe når venstre tasten bliver trykket
-        if(key == 'a' && colorL != this.pladeFarve){
+        if(key == 'a' && Player1.colorL != this.pladeFarve){
           Player1.x +=1;
         }
         //tjekker om spiller rammer en bombe når højre tasten bliver trykket
-        if(key == 'd' && colorR != this.pladeFarve){
+        if(key == 'd' && Player1.colorR != this.pladeFarve){
           Player1.x -=1;
         }
       }
      }
     }
    //COLLISION MELLEM EKSPLOSION OG PLAYER
-   colorDL2 = get(int(Player1.x - Player1.size/2),int(Player1.y + Player1.size/2));
-   colorDR2 = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
-   colorTL2 = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
-   colorTR2 = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
-   //print(colorDL2);
-   if(colorTL2 > bombeFarve||colorTR2 > bombeFarve||colorDL2 > bombeFarve||colorDR2 > bombeFarve){
-     Player1.health = false;
-     //print("av");
+   //Tjekker farve rundt omkring player
+   
+   print(Player1.colorT);
+   // if statement tjekker om den rammer bombe
+   if(Player1.colorTL > bombeFarve||Player1.colorTR > bombeFarve||Player1.colorDL > bombeFarve||Player1.colorDR > bombeFarve ){
+       Player1.health = false;
+       //print("av");
+   }
+   if(Player1.colorT == valcomFarve || Player1.colorD == valcomFarve || Player1.colorL == valcomFarve || Player1.colorR == valcomFarve|| Player1.colorTL == valcomFarve || Player1.colorTR == valcomFarve || Player1.colorDL == valcomFarve || Player1.colorDR == valcomFarve){
+     print("av");
    }
   }
 }

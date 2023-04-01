@@ -7,7 +7,16 @@ class Bomberman{
   boolean health = true;
   int bombNr;
   int bombPlaced;
-
+  
+  int colorDR;
+  int colorDL;
+  int colorTR;
+  int colorTL;
+  
+  int colorD;
+  int colorT;
+  int colorR;
+  int colorL;
   
   Bomberman(){
     //Beskriver placeringen på player
@@ -57,5 +66,17 @@ class Bomberman{
           }
       } 
     }
+  }
+  
+  void colorCheck(){
+   this.colorDL = get(int(Player1.x - Player1.size/2),int(Player1.y + Player1.size/2));
+   this.colorDR = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
+   this.colorTL = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
+   this.colorTR = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
+   
+   this.colorD = get(int(Player1.x),int(Player1.y + Player1.size/2));
+   this.colorT = get(int(Player1.x),int(Player1.y - Player1.size/2));
+   this.colorL = get(int(Player1.x - Player1.size/2),int(Player1.y));
+   this.colorR = get(int(Player1.x + Player1.size/2),int(Player1.y));
   }
 }
