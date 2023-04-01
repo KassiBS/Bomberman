@@ -17,15 +17,17 @@ class Enemy{
     this.size = 20;
     this.y = 37.5;
     this.x = 37.5;
-    this.eColorR = 1;
-    this.eColorG = 1;
-    this.eColorB = 1;
+    this.v = 1;
+    this.eColorR = 240;
+    this.eColorG = 137;
+    this.eColorB = 19;
   }
   
   void show(){
     rectMode(CENTER);
     fill(this.eColorR,eColorG,eColorB);
     rect(this.x,this.y,this.size,this.size);
+    
   }
   
   void checkColor(){
@@ -33,6 +35,6 @@ class Enemy{
   }
   
   void update(){
-    
+    this.x += this.v;
   }
 }
