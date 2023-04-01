@@ -71,7 +71,7 @@ class Bomb{
       }
       noStroke();
       fill(245, 146, 76);
-      
+      rectMode(CENTER);
       //laver blast radius for midten
       rect(this.x,this.y,this.size,this.size);
       //laver siderne af blast radius for x-aksen til højre
