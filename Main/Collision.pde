@@ -129,7 +129,7 @@ void bombCheck(){
    colorTL2 = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
    colorTR2 = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
    //print(colorDL2);
-   if(colorTL2 > bombeFarve){
+   if(colorTL2 > bombeFarve||colorTR2 > bombeFarve||colorDL2 > bombeFarve||colorDR2 > bombeFarve){
      Player1.health = false;
      //print("av");
    }
