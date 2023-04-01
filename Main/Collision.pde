@@ -128,9 +128,10 @@ void bombCheck(){
    colorDR2 = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
    colorTL2 = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
    colorTR2 = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
-   print(colorDL2);
-   if(colorTL2 < bombeFarve){
+   //print(colorDL2);
+   if(colorTL2 > bombeFarve){
      Player1.health = false;
+     //print("av");
    }
   }
 }

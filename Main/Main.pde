@@ -38,14 +38,15 @@ void draw(){
 
 void keyPressed(){
   //tjekker om x knappen bliver trykket ned
-  if (key == 'x'|| key == 'X'){
-    //if statement tjekker om der er færre bomber placeret en det maximumme antal bomber der kan placeres
-      if(Player1.bombPlaced < Player1.bombNr){
-      Bombe.add(new Bomb());
-
-      //Der bliver lagt 1 til antal bomber placeret
-      Player1.bombPlaced += 1;
-
-     } 
+  if(Player1.health){
+    if (key == 'x'|| key == 'X'){
+      //if statement tjekker om der er færre bomber placeret en det maximumme antal bomber der kan placeres
+        if(Player1.bombPlaced < Player1.bombNr){
+        Bombe.add(new Bomb());
+        //Der bliver lagt 1 til antal bomber placeret
+        Player1.bombPlaced += 1;
+  
+       } 
+    }
   }
 }
