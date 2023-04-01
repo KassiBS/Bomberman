@@ -3,6 +3,7 @@ MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
 ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
 Bricks CreateBricks = new Bricks();
+Enemy valcom = new Enemy();
 
 void setup(){
   size(775,325);
@@ -11,6 +12,7 @@ void setup(){
 }
 
 void draw(){
+  
   rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
@@ -24,6 +26,7 @@ void draw(){
      Bomb temp = Bombe.get(i);
      temp.spawn();
      //print(temp.x +"   "+ temp.y);
+     
      //if statement tjekker om bombe er exploderet. Hvis den er det fjerner den bomben 
      if(temp.exploded == true){
        Bombe.remove(i);
@@ -34,6 +37,7 @@ void draw(){
 
   Kollider.bombCheck();
   
+    valcom.show();
   
 }
 

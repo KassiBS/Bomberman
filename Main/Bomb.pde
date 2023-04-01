@@ -75,7 +75,6 @@ class Bomb{
       //laver blast radius for midten
       rect(this.x,this.y,this.size,this.size);
       //laver siderne af blast radius for x-aksen til højre
-      print(this.x,this.y);
       rectMode(CORNER);
       rect(this.x + this.size/2,this.y- this.size/2,this.size * this.radiusR,this.size);
       //laver siderne af blast radius for x-aksen til venstre
