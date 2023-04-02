@@ -17,6 +17,7 @@ class Enemy{
     this.size = 20;
     this.y = Grid.Size+37.5;
     this.x = 37.5;
+    this.v = 1;
     this.eColorR = 240;
     this.eColorG = 137;
     this.eColorB = 19;
@@ -35,6 +36,6 @@ class Enemy{
   }
   
   void update(){
-    
+    this.x += this.v;
   }
 }
