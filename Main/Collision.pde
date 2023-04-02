@@ -157,9 +157,12 @@ void afterBomb(){
      for(int j = 1; j <12; j++){
        if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == Grid.Size * j + Grid.Size/2){
          valcom.checkSize = Grid.Size;
-         if(valcom.colorD != pladeFarve || valcom.colorD != -6886657 ){
-           valcom.vy = 0;
-           print(valcom.colorD);
+         if(valcom.colorD != playerFarve){
+           if(valcom.colorD != pladeFarve){
+             valcom.vy = 0;
+             print(valcom.y);
+             print(valcom.colorD);
+           }
          }
        }
      }
