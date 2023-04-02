@@ -15,7 +15,7 @@ class Enemy{
   
   Enemy(){
     this.size = 20;
-    this.y = Grid.Size+37.5;
+    this.y = 37.5;
     this.x = 37.5;
     this.v = 1;
     this.eColorR = 240;
@@ -24,11 +24,9 @@ class Enemy{
   }
   
   void show(){
-    noStroke();
     rectMode(CENTER);
     fill(this.eColorR,eColorG,eColorB);
-    circle(this.x,this.y,this.size);
-    stroke(0);
+    rect(this.x,this.y,this.size,this.size);
   }
   
   void checkColor(){
