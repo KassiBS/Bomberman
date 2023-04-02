@@ -124,7 +124,7 @@ void bombCheck(){
        //print("av");
    }
    if(Player1.colorT == valcomFarve || Player1.colorD == valcomFarve || Player1.colorL == valcomFarve || Player1.colorR == valcomFarve|| Player1.colorTL == valcomFarve || Player1.colorTR == valcomFarve || Player1.colorDL == valcomFarve || Player1.colorDR == valcomFarve){
-     Player1.health = false;
+     print("av");
    }
   }
 }
