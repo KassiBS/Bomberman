@@ -153,8 +153,10 @@ void afterBomb(){
    
    //COLLISION MELLEM ENEMY OG BRICKS
    for(int i = 1; i < 30; i++){
-     if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == 37.5){
-       valcom.vy = 0;
+     for(int j = 1; j <12; j++){
+       if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == Grid.Size * j + Grid.Size/2){
+         print("midten");
+       }
      }
    }
    
