@@ -152,10 +152,11 @@ void afterBomb(){
    }
    
    //COLLISION MELLEM ENEMY OG BRICKS
-     if (valcom.x == Grid.Size + Grid.Size/2 && valcom.y == 37.5){
+   for(int i = 1; i < 30; i++){
+     if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == 37.5){
        valcom.vy = 0;
      }
-
+   }
    
    
   }

@@ -21,7 +21,7 @@ class Enemy{
   Enemy(){
     this.size = 20;
     this.y = Grid.Size + 37.5;
-    this.x = 37.5;
+    this.x = Grid.Size *28 + 37.5;
     this.vy = -1;
     this.vx = 0;
     this.eColorR = 240;
