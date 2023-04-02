@@ -20,7 +20,7 @@ void draw(){
   CreateBricks.show();
   //Opdaterer kondition på player
   Player1.update();
-  Kollider.check();
+  Kollider.beforeBomb();
 //for-lykke bliver ved med at køre helt til at den har fyldt arrayet ud
   for(int i = 0; i < Bombe.size(); i++){
      Bomb temp = Bombe.get(i);
@@ -35,11 +35,11 @@ void draw(){
      }
   }
 
-  Kollider.bombCheck();
   
-    valcom.show();
-    valcom.update();
   
+  valcom.show();
+  valcom.update();
+  Kollider.afterBomb();
 }
 
 void keyPressed(){
