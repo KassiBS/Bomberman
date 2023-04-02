@@ -10,9 +10,13 @@ class Enemy{
   float x;
   float y;
   
+  boolean health = true;
+  
   int eColorR;
   int eColorG;
   int eColorB;
+  
+  int checkSize;
   
   Enemy(){
     this.size = 20;
@@ -26,6 +30,7 @@ class Enemy{
   }
   
   void show(){
+    //viser enemy på kanvas
     rectMode(CENTER);
     noStroke();
     fill(this.eColorR,eColorG,eColorB);
@@ -34,10 +39,15 @@ class Enemy{
   }
   
   void checkColor(){
-    
+   //tjekker farve rundt omkring Enemy
+   this.colorD = get(int(this.x),int(this.y + this.checkSize));
+   this.colorT = get(int(this.x),int(this.y - this.checkSize));
+   this.colorL = get(int(this.x - this.checkSize),int(this.y));
+   this.colorR = get(int(this.x + this.checkSize),int(this.y));
   }
   
   void update(){
+    //opdatere enemy's placering
     this.x += this.vx;
     this.y += this.vy;
   }

@@ -16,7 +16,7 @@ class Collision{
   
   int pladeFarve = -15546045;
   int bombeFarve = -1433747;
-  int explosionsFarve = -68344;
+  int explosionsFarve = -683444;
   int valcomFarve = -1013485;
   
   Collision(){
@@ -128,19 +128,25 @@ void afterBomb(){
     colorTL = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
    //print(Player1.colorT);
    // if statement tjekker om den rammer bombe
-   if(colorTL > bombeFarve||colorTR > bombeFarve||colorDL > bombeFarve||colorDR > bombeFarve ){
+   if(colorTL == explosionsFarve||colorTR == explosionsFarve||colorDL == explosionsFarve||colorDR == explosionsFarve ){
        Player1.health = false;
        //print("av");
    }
    //COLLISION MELLEM PLAYER OG ENEMY
+   //Tjekker farve rundt omkring player
    colorD = get(int(Player1.x),int(Player1.y + Player1.size/2));
    colorT = get(int(Player1.x),int(Player1.y - Player1.size/2));
    colorL = get(int(Player1.x - Player1.size/2),int(Player1.y));
    colorR = get(int(Player1.x + Player1.size/2),int(Player1.y));
+   // if statement tjekker om player rammer valcom
    if(colorT == valcomFarve || colorD == valcomFarve || colorL == valcomFarve || colorR == valcomFarve|| colorTL == valcomFarve || colorTR == valcomFarve || colorDL == valcomFarve || colorDR == valcomFarve){
      Player1.health = false;
    }
    
-   
+   //COLLISION MELLEM ENEMY OG EKSPLOSION
+   valcom.checkSize = int(valcom.size/2)+1 ;
+   if(valcom.colorT == explosionsFarve || valcom.colorD == explosionsFarve|| valcom.colorR == explosionsFarve|| valcom.colorL == explosionsFarve){
+     valcom.health = false;
+   }
   }
 }

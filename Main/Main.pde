@@ -36,9 +36,11 @@ void draw(){
   }
 
   
-  
-  valcom.show();
-  valcom.update();
+  if(valcom.health == true){
+    valcom.show();
+    valcom.update();
+    valcom.checkColor();
+  }
   Kollider.afterBomb();
 }
 
