@@ -16,13 +16,13 @@ class Enemy{
   int eColorG;
   int eColorB;
   
-  int checkSize;
+  float checkSize;
   
   Enemy(){
     this.size = 20;
     this.y = Grid.Size + 37.5;
     this.x = 37.5;
-    this.vy = 0;
+    this.vy = -1;
     this.vx = 0;
     this.eColorR = 240;
     this.eColorG = 137;

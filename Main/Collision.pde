@@ -144,9 +144,19 @@ void afterBomb(){
    }
    
    //COLLISION MELLEM ENEMY OG EKSPLOSION
-   valcom.checkSize = int(valcom.size/2)+1 ;
+   //Sætter tjeksize udenfor enemy
+   valcom.checkSize = valcom.size/2+1 ;
+   //if statement tjekker om valcom bliver ramt af eksplosion
    if(valcom.colorT == explosionsFarve || valcom.colorD == explosionsFarve|| valcom.colorR == explosionsFarve|| valcom.colorL == explosionsFarve){
      valcom.health = false;
    }
+   
+   //COLLISION MELLEM ENEMY OG BRICKS
+     if (valcom.x == Grid.Size + Grid.Size/2 && valcom.y == 37.5){
+       valcom.vy = 0;
+     }
+
+   
+   
   }
 }
