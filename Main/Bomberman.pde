@@ -69,14 +69,15 @@ class Bomberman{
   }
   
   void colorCheck(){
-   this.colorDL = get(int(Player1.x - Player1.size/2),int(Player1.y + Player1.size/2));
-   this.colorDR = get(int(Player1.x + Player1.size/2),int(Player1.y + Player1.size/2));
-   this.colorTL = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
-   this.colorTR = get(int(Player1.x + Player1.size/2),int(Player1.y - Player1.size/2));
+   this.colorDL = get(int(this.x - this.size/2)+1,int(this.y + this.size/2)+1);
+   this.colorDR = get(int(this.x + this.size/2)+1,int(this.y + this.size/2)+1);
+   this.colorTL = get(int(this.x - this.size/2)+1,int(this.y - this.size/2)+1);
+   this.colorTR = get(int(this.x + this.size/2)+1,int(this.y - this.size/2)+1);
+   print(this.colorD);
    
-   this.colorD = get(int(Player1.x),int(Player1.y + Player1.size/2));
-   this.colorT = get(int(Player1.x),int(Player1.y - Player1.size/2));
-   this.colorL = get(int(Player1.x - Player1.size/2),int(Player1.y));
-   this.colorR = get(int(Player1.x + Player1.size/2),int(Player1.y));
+   this.colorD = get(int(this.x)+1,int(this.y + this.size/2)+1);
+   this.colorT = get(int(this.x)+1,int(this.y - this.size/2)+1);
+   this.colorL = get(int(this.x - this.size/2)+1,int(this.y)+1);
+   this.colorR = get(int(this.x + this.size/2)+1,int(this.y)+1);
   }
 }
