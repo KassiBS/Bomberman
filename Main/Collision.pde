@@ -22,31 +22,35 @@ class Collision{
   int pladeFarve = -15546045;
   int bombeFarve = -1433747;
   int explosionsFarve = -68344;
+  int valcomFarve = -1013485;
   
   Collision(){
     
   }
-  void check(){
+  void beforeBomb(){
     //COLLISION FOR PLAYER
     //Farven på hjørnerne
-
+    colorDR = get(int(Player1.x+ Player1.size/2),int(Player1.y + Player1.size/2));
+    colorTR = get(int(Player1.x+ Player1.size/2),int(Player1.y - Player1.size/2));
+    colorDL = get(int(Player1.x - Player1.size/2),int(Player1.y+ Player1.size/2));
+    colorTL = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
     //if statement tjekker om tastaturet er trykket på
     //print(Player1.colorTR);
     if(keyPressed){
       //tjekker om spiller rammer en block når op tasten bliver trykket
-      if(key == 'w' && Player1.colorTR != this.pladeFarve|| key == 'w' && Player1.colorTL != this.pladeFarve ){
+      if(key == 'w' && colorTR != this.pladeFarve|| key == 'w' && colorTL != this.pladeFarve ){
         Player1.y +=1;
       }
       //tjekker om spiller rammer en block når ned tasten bliver trykket
-      if(key == 's' && Player1.colorDR != this.pladeFarve|| key == 's' && Player1.colorDL != this.pladeFarve ){
+      if(key == 's' && colorDR != this.pladeFarve|| key == 's' && colorDL != this.pladeFarve ){
         Player1.y -=1;
       }
       //tjekker om spiller rammer en block når venstre tasten bliver trykket
-      if(key == 'a' && Player1.colorTL != this.pladeFarve|| key == 'a' && Player1.colorDL != this.pladeFarve ){
+      if(key == 'a' && colorTL != this.pladeFarve|| key == 'a' && colorDL != this.pladeFarve ){
         Player1.x +=1;
       }
       //tjekker om spiller rammer en block når højre tasten bliver trykket
-      if(key == 'd' && Player1.colorTR != this.pladeFarve|| key == 'd' && Player1.colorDR != this.pladeFarve ){
+      if(key == 'd' && colorTR != this.pladeFarve|| key == 'd' && colorDR != this.pladeFarve ){
         Player1.x -=1;
       }
     }
@@ -91,7 +95,7 @@ class Collision{
 
   }
   
-void bombCheck(){
+void afterBomb(){
    //COLLISION MELLEM BOMBE OG PLAYER
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
@@ -123,15 +127,24 @@ void bombCheck(){
     }
    //COLLISION MELLEM EKSPLOSION OG PLAYER
    //Tjekker farve rundt omkring player
-   
+   colorDR = get(int(Player1.x+ Player1.size/2),int(Player1.y + Player1.size/2));
+   colorTR = get(int(Player1.x+ Player1.size/2),int(Player1.y - Player1.size/2));
+   colorDL = get(int(Player1.x - Player1.size/2),int(Player1.y+ Player1.size/2));
+   colorTL = get(int(Player1.x - Player1.size/2),int(Player1.y - Player1.size/2));
    //print(Player1.colorT);
    // if statement tjekker om den rammer bombe
-   if(Player1.colorTL > bombeFarve||Player1.colorTR > bombeFarve||Player1.colorDL > bombeFarve||Player1.colorDR > bombeFarve ){
+   if(colorTL > bombeFarve||colorTR > bombeFarve||colorDL > bombeFarve||colorDR > bombeFarve ){
        Player1.health = false;
        //print("av");
    }
-   if(Player1.colorT == valcomFarve || Player1.colorD == valcomFarve || Player1.colorL == valcomFarve || Player1.colorR == valcomFarve|| Player1.colorTL == valcomFarve || Player1.colorTR == valcomFarve || Player1.colorDL == valcomFarve || Player1.colorDR == valcomFarve){
-     print("av");
+  
+   colorD = get(int(Player1.x),int(Player1.y + Player1.size/2));
+   colorT = get(int(Player1.x),int(Player1.y - Player1.size/2));
+   colorL = get(int(Player1.x - Player1.size/2),int(Player1.y));
+   colorR = get(int(Player1.x + Player1.size/2),int(Player1.y));
+   if(colorT == valcomFarve || colorD == valcomFarve || colorL == valcomFarve || colorR == valcomFarve|| colorTL == valcomFarve || colorTR == valcomFarve || colorDL == valcomFarve || colorDR == valcomFarve){
+     //print("av");
+     Player1.health = false;
    }
   }
 }
