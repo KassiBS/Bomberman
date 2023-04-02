@@ -38,7 +38,6 @@ void draw(){
   Kollider.bombCheck();
   
     valcom.show();
-    valcom.update();
   
 }
 
