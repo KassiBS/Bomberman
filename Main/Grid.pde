@@ -1,5 +1,5 @@
 class MakeGrid{
-  float Size;
+  float Size = 25;
   float Counter;
   float XLoc;
   float YLoc;

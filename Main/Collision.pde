@@ -18,6 +18,7 @@ class Collision{
   int bombeFarve = -1433747;
   int explosionsFarve = -683444;
   int valcomFarve = -1013485;
+  int playerFarve = -6886657;
   
   Collision(){
     
@@ -155,7 +156,11 @@ void afterBomb(){
    for(int i = 1; i < 30; i++){
      for(int j = 1; j <12; j++){
        if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == Grid.Size * j + Grid.Size/2){
-         print("midten");
+         valcom.checkSize = Grid.Size;
+         if(valcom.colorD != pladeFarve || valcom.colorD != -6886657 ){
+           valcom.vy = 0;
+           print(valcom.colorD);
+         }
        }
      }
    }
