@@ -12,7 +12,7 @@ class Enemy{
   float x;
   float y;
   
-  boolean health = true;
+  boolean health;
   
   int eColorR;
   int eColorG;
@@ -25,9 +25,8 @@ class Enemy{
     //sætterrandom spawn koordinat på enemy
     this.xSpawn = float(int(random(1,30)));
     this.ySpawn = float(int(random(1,12)));
-    this.y =  Grid.Size *5 +37.5;
-    this.x =  37.5 +25 *6 ;
-    this.vy = -1;
+    this.health = true;
+    this.vy = 0;
     this.vx = 0;
     this.eColorR = 240;
     this.eColorG = 137;

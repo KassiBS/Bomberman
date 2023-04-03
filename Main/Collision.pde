@@ -146,33 +146,39 @@ void afterBomb(){
      Player1.health = false;
    }
    
-   //COLLISION MELLEM ENEMY OG EKSPLOSION
-   //Sætter tjeksize udenfor enemy
-   valcom.checkSize = valcom.size/2+1 ;
-   //if statement tjekker om valcom bliver ramt af eksplosion
-   if(valcom.colorT == explosionsFarve || valcom.colorD == explosionsFarve|| valcom.colorR == explosionsFarve|| valcom.colorL == explosionsFarve){
-     valcom.health = false;
-   }
-   
-   //COLLISION MELLEM ENEMY OG BRICKS
-   //Angiver at valcom skal lave tjeksize med 1 block
-   valcom.checkSize = Grid.Size;
-   // to forlykker gør at den tjekker condition for enemy for alle blocks
-   for(int i = 1; i < 30; i++){
-     for(int j = 1; j <12; j++){
-       // if statement tjekker enemy condtition på midten af hver block
-       if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == Grid.Size * j + Grid.Size/2){
-         // giver tilfældig x hastighed
-         valcom.vx = velocityCalc();
-         // giver tilfældig x-værdi på baggrund af y-værdien
-         valcom.vy = velocity(valcom.vx);
-         // de to funktioner tjekker om at de ikke rammer muren og retter op på det
-         valcom.vy = correctVelY(valcom.vy);
-         valcom.vx = correctVelX(valcom.vy);
-     
-       }
+   for(int k = 0; k < valcom.size(); k++){
+     Enemy temp = valcom.get(k);
+     //COLLISION MELLEM ENEMY OG EKSPLOSION
+     //Sætter tjeksize udenfor enemy
+     temp.checkSize = temp.size/2;
+     temp.checkColor();
+     //if statement tjekker om valcom bliver ramt af eksplosion
+     if(temp.colorT == explosionsFarve || temp.colorD == explosionsFarve|| temp.colorR == explosionsFarve|| temp.colorL == explosionsFarve){
+       temp.health = false;
+       print(temp.checkSize);
      }
-    }
+     //COLLISION MELLEM ENEMY OG BRICKS
+     //Angiver at valcom skal lave tjeksize med 1 block
+     temp.checkSize = Grid.Size;
+     temp.checkColor();
+     // to forlykker gør at den tjekker condition for enemy for alle blocks
+     for(int i = 1; i < 30; i++){
+       for(int j = 1; j <12; j++){
+         // if statement tjekker enemy condtition på midten af hver block
+         if (temp.x == Grid.Size * i + Grid.Size/2 && temp.y == Grid.Size * j + Grid.Size/2){
+           // giver tilfældig x hastighed
+           temp.vx = velocityCalc();
+           // giver tilfældig x-værdi på baggrund af y-værdien
+           temp.vy = velocity(temp.vx);
+           // de to funktioner tjekker om at de ikke rammer muren og retter op på det
+           temp.vy = correctVelY(temp.vy,temp.colorD,temp.colorT);
+           temp.vx = correctVelX(temp.vy,temp.colorR,temp.colorL);
+       
+         }
+       }
+      }
+   }
+    
   }
 }
 
@@ -218,60 +224,60 @@ float velocity(float velo){
   return velo;
 }
 //retter op på y-hastigheden hvis den går ind i væggen
-float correctVelY(float velo){
+float correctVelY(float velo,float colorD,float colorT){
   //sætter clear = true
   boolean clear = true;
   //if statements tjekker om enemy rammer væggen og sætter clear = true
-  if (velo == 1 && valcom.colorD != pladeFarve && valcom.colorD != playerFarve){
+  if (velo == 1 && colorD != pladeFarve && colorD != playerFarve){
     clear = false;
     // giver en ny hastighed  
     velo = velocityCalc();
     //if statement tjekker om enemy rammer væggen igen
     if(velo == 1){
       //køre funktionen igen
-      velo = correctVelY(velo);
+      velo = correctVelY(velo,colorD,colorT);
     }
   }
-  if (velo == -1 && valcom.colorT != pladeFarve && valcom.colorT != playerFarve){
+  if (velo == -1 && colorT != pladeFarve && colorT != playerFarve){
     clear = false;
     velo = velocityCalc();
     if(velo == -1){
       //print("Forkert");
-      velo = correctVelY(velo);
+      velo = correctVelY(velo,colorD,colorT);
     }
   }
   // if statement tjekker om clear = false
   if(clear == false){
-    velo = correctVelY(velo);
+    velo = correctVelY(velo,colorD,colorT);
   }
   return velo;
 }
 //Funktion giver ny koordinat for enemy
-float correctVelX(float velo){
+float correctVelX(float velo, float colorR, float colorL){
   // giver en ny hastighed på baggrund af y-hastigheden
   velo = velocity(velo);
   boolean clear = true;
   //If statement tjekker om enemy rammer væggen og sætter claer = false
-  if(velo == -1 && valcom.colorL != pladeFarve && valcom.colorL != playerFarve){
+  if(velo == -1 && colorL != pladeFarve && colorL != playerFarve){
     clear = false;
     // giver en ny hastighed 
     velo = velocityCalc();
       //if statement tjekker om enemy rammer væggen igen
       if(velo == -1){
         //køre funktionen igen
-        velo = correctVelX(velo);
+        velo = correctVelX(velo,colorR,colorL);
      }
   }
-  if(velo == 1 && valcom.colorR != pladeFarve && valcom.colorR != playerFarve){
+  if(velo == 1 && colorR != pladeFarve && colorR != playerFarve){
     clear = false;
     velo = velocityCalc();
      if(velo == 1){
-       velo = correctVelX(velo);
+       velo = correctVelX(velo,colorR,colorL);
      }
   }
   // if statement tjekker om clear = false
   if(clear == false){
-    velo = correctVelX(velo);
+    velo = correctVelX(velo,colorR,colorL);
   }
   return velo;
 }

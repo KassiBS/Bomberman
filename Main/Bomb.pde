@@ -22,7 +22,7 @@ class Bomb{
     // size beskriver størrelsen på bomben
     this.size = int(Grid.Size);
     // radiusMax beskriver den maximale størrelse på explosionen
-    this.radiusMax = 1;
+    this.radiusMax = 2;
     //radius for de individuelle sider hvor, R = right, L = left, T = top, D = down
     this.radiusR = 0;
     this.radiusL = 0;

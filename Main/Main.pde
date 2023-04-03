@@ -3,23 +3,28 @@ MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
 ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
 Bricks CreateBricks = new Bricks();
-Enemy valcom = new Enemy();
+ArrayList<Enemy> valcom = new ArrayList<Enemy>();
 
 void setup(){
   size(775,325);
   //Viser player1 på kanvas
   Player1.show();
-  //forlykker spawner tjekker alle koordinater på pladen
-  for(int i = 1; i <30; i ++){
-    for(int j = 1; j < 12; j++){
-      if(i == valcom.xSpawn){
-        valcom.x = i * Grid.Size + Grid.Size/2;
-      }
-      if(j == valcom.ySpawn){
-        valcom.y = j * Grid.Size + Grid.Size/2;
+  for(int k = 0; k < 1; k++){
+    valcom.add(new Enemy());
+    Enemy temp = valcom.get(k);
+    //forlykker spawner tjekker alle koordinater på pladen
+    for(int i = 1; i <30; i ++){
+      for(int j = 1; j < 12; j++){
+        if(i == temp.xSpawn){
+          temp.x = i * Grid.Size + Grid.Size/2;
+        }
+        if(j == temp.ySpawn){
+          temp.y = j * Grid.Size + Grid.Size/2;
+        }
       }
     }
   }
+  
 }
 
 void draw(){
@@ -28,7 +33,7 @@ void draw(){
   //Baggrundsfarve er grøn
   background(18, 201, 67);
   Grid.show();
-  CreateBricks.show();
+  //CreateBricks.show();
   //Opdaterer kondition på player
   Player1.update();
   Kollider.beforeBomb();
@@ -45,13 +50,17 @@ void draw(){
        Player1.bombPlaced -= 1;
      }
   }
-
   
-  if(valcom.health == true){
-    valcom.show();
-    valcom.update();
-    valcom.checkColor();
+  for(int i = 0; i < valcom.size(); i++){
+    Enemy temp = valcom.get(i);
+    temp.checkColor();
+    temp.show();
+    temp.update();
+    if(temp.health == false){
+      valcom.remove(i);
+    }
   }
+  
   Kollider.afterBomb();
 }
 
