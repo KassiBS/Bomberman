@@ -20,9 +20,9 @@ class Enemy{
   
   Enemy(){
     this.size = 20;
-    this.y =  37.5;
+    this.y =  Grid.Size *9 +37.5;
     this.x =  37.5;
-    this.vy = 1;
+    this.vy = -1;
     this.vx = 0;
     this.eColorR = 240;
     this.eColorG = 137;
@@ -41,7 +41,7 @@ class Enemy{
   void checkColor(){
    //tjekker farve rundt omkring Enemy
    this.colorD = get(int(this.x),int(this.y + this.checkSize )+2);
-   this.colorT = get(int(this.x),int(this.y - this.checkSize +2));
+   this.colorT = get(int(this.x),int(this.y - this.checkSize )+2);
    this.colorL = get(int(this.x - this.checkSize+2),int(this.y));
    this.colorR = get(int(this.x + this.checkSize+2),int(this.y));
   }

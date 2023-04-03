@@ -155,12 +155,13 @@ void afterBomb(){
    }
    
    //COLLISION MELLEM ENEMY OG BRICKS
+   valcom.checkSize = Grid.Size;
    for(int i = 1; i < 30; i++){
      for(int j = 1; j <12; j++){
        if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == Grid.Size * j + Grid.Size/2){
-         
-         valcom.vx = velocityCalc();
-         valcom.vy = velocity(valcom.vx);
+         //valcom.vx = velocityCalc();
+         //valcom.vy = velocity(valcom.vx);
+         valcom.vy = correctVelY(valcom.vy);
          
      
        }
@@ -204,5 +205,23 @@ float velocity(float velo){
     velo = 0;
   }
   
+  return velo;
+}
+
+float correctVelY(float velo){
+  if (velo == 1 && valcom.colorD != pladeFarve && valcom.colorD != playerFarve){
+    velo = velocityCalc();
+    if(velo == 1){
+      print("Forkert");
+      velo = correctVelY(velo);
+    }
+  }
+  if (velo == -1 && valcom.colorT != pladeFarve && valcom.colorT != playerFarve){
+    velo = velocityCalc();
+    if(velo == -1){
+      print("Forkert");
+      velo = correctVelY(velo);
+    }
+  }
   return velo;
 }

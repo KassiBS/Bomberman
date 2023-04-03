@@ -11,8 +11,8 @@ class Bomberman{
   
   Bomberman(){
     //Beskriver placeringen på player
-    this.x = 37.5 ;
-    this.y = 37.5 + 25;
+    this.x = 37.5 + 25 * 4;
+    this.y = 37.5 + 25 ;
     
     //Størrelse på player
     this.size = 20;
