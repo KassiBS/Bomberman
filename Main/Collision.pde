@@ -1,3 +1,9 @@
+int pladeFarve = -15546045;
+int bombeFarve = -1433747;
+int explosionsFarve = -683444;
+int valcomFarve = -1013485;
+int playerFarve = -6886657;
+
 class Collision{
   int colorDR;
   int colorDL;
@@ -14,11 +20,7 @@ class Collision{
   int blockColorT;
   int blockColorD;
   
-  int pladeFarve = -15546045;
-  int bombeFarve = -1433747;
-  int explosionsFarve = -683444;
-  int valcomFarve = -1013485;
-  int playerFarve = -6886657;
+  
   
   Collision(){
     
@@ -34,19 +36,19 @@ class Collision{
     //print(Player1.colorTR);
     if(keyPressed){
       //tjekker om spiller rammer en block når op tasten bliver trykket
-      if(key == 'w' && colorTR != this.pladeFarve|| key == 'w' && colorTL != this.pladeFarve ){
+      if(key == 'w' && colorTR != pladeFarve|| key == 'w' && colorTL != pladeFarve ){
         Player1.y +=1;
       }
       //tjekker om spiller rammer en block når ned tasten bliver trykket
-      if(key == 's' && colorDR != this.pladeFarve|| key == 's' && colorDL != this.pladeFarve ){
+      if(key == 's' && colorDR != pladeFarve|| key == 's' && colorDL != pladeFarve ){
         Player1.y -=1;
       }
       //tjekker om spiller rammer en block når venstre tasten bliver trykket
-      if(key == 'a' && colorTL != this.pladeFarve|| key == 'a' && colorDL != this.pladeFarve ){
+      if(key == 'a' && colorTL != pladeFarve|| key == 'a' && colorDL != pladeFarve ){
         Player1.x +=1;
       }
       //tjekker om spiller rammer en block når højre tasten bliver trykket
-      if(key == 'd' && colorTR != this.pladeFarve|| key == 'd' && colorDR != this.pladeFarve ){
+      if(key == 'd' && colorTR != pladeFarve|| key == 'd' && colorDR != pladeFarve ){
         Player1.x -=1;
       }
     }
@@ -103,19 +105,19 @@ void afterBomb(){
       if(Player1.x + Player1.size/2 < temp.x - temp.size/2 || Player1.x - Player1.size/2 > temp.x + temp.size/2||Player1.y + Player1.size/2 < temp.y - temp.size/2 || Player1.y - Player1.size/2 > temp.y + temp.size/2){
         if(keyPressed){
         //tjekker om spiller rammer en bombe når op tasten bliver trykket
-        if(key == 'w' && colorT != this.pladeFarve){
+        if(key == 'w' && colorT != pladeFarve){
           Player1.y +=1;
          }
         //tjekker om spiller rammer en bombe når ned tasten bliver trykket
-        if(key == 's' && colorD != this.pladeFarve){
+        if(key == 's' && colorD != pladeFarve){
           Player1.y -=1;
         }
         //tjekker om spiller rammer en bombe når venstre tasten bliver trykket
-        if(key == 'a' && colorL != this.pladeFarve){
+        if(key == 'a' && colorL != pladeFarve){
           Player1.x +=1;
         }
         //tjekker om spiller rammer en bombe når højre tasten bliver trykket
-        if(key == 'd' && colorR != this.pladeFarve){
+        if(key == 'd' && colorR != pladeFarve){
           Player1.x -=1;
         }
       }
@@ -156,18 +158,51 @@ void afterBomb(){
    for(int i = 1; i < 30; i++){
      for(int j = 1; j <12; j++){
        if (valcom.x == Grid.Size * i + Grid.Size/2 && valcom.y == Grid.Size * j + Grid.Size/2){
-         valcom.checkSize = Grid.Size;
-         if(valcom.colorD != playerFarve){
-           if(valcom.colorD != pladeFarve){
-             valcom.vy = 0;
-             print(valcom.y);
-             print(valcom.colorD);
-           }
-         }
+         
+         valcom.vx = velocityCalc();
+         valcom.vy = velocity(valcom.vx);
+         
+     
        }
      }
-   }
-   
-   
+    }
   }
+}
+
+
+
+float velocityCalc(){
+  float vel = int(random(1,4));
+  if(vel == 1){
+    vel = 1;
+  }
+  if(vel == 2){
+    vel = -1;
+  }
+  if(vel == 3){
+    vel = 0;
+  }
+  //print(vel);
+  return vel;
+}
+
+float velocity(float velo){
+  //print(vel);
+  if (velo == 0){
+    velo = int(random(1,3));
+    if (velo == 1){
+      velo = 1;
+    }
+    if (velo == 2){
+      velo = -1;
+    }
+  }  
+  else if(velo == 1 ){
+    velo = 0;
+  }
+  else if(velo == -1 ){
+    velo = 0;
+  }
+  
+  return velo;
 }

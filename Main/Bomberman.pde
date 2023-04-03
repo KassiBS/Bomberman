@@ -15,7 +15,7 @@ class Bomberman{
     this.y = 37.5 + 25;
     
     //Størrelse på player
-    this.size = 25;
+    this.size = 20;
     //Hastigheden på player
     this.v = 1;
     //Hvor meget bomber bomberman har plads til

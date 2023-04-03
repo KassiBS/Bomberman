@@ -20,9 +20,9 @@ class Enemy{
   
   Enemy(){
     this.size = 20;
-    this.y =  30.5;
+    this.y =  37.5;
     this.x =  37.5;
-    this.vy = 0.5;
+    this.vy = 1;
     this.vx = 0;
     this.eColorR = 240;
     this.eColorG = 137;
