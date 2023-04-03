@@ -17,7 +17,7 @@ void draw(){
   //Baggrundsfarve er grøn
   background(18, 201, 67);
   Grid.show();
-  //CreateBricks.show();
+  CreateBricks.show();
   //Opdaterer kondition på player
   Player1.update();
   Kollider.beforeBomb();

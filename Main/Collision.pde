@@ -227,5 +227,12 @@ float correctVelY(float velo){
 }
 float correctVelX(float velo){
   velo = velocity(velo);
+  if(velo == -1 && valcom.colorL != pladeFarve && valcom.colorL != playerFarve){
+    print("mur");
+    velo = velocityCalc();
+     if(velo == -1){
+       velo = correctVelX(velo);
+     }
+  }
   return velo;
 }
