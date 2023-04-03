@@ -225,12 +225,22 @@ float correctVelY(float velo){
   }
   return velo;
 }
+//Funktion giver ny koordinat for enemy
 float correctVelX(float velo){
+  // giver en ny hastighed på baggrund af y-hastigheden
   velo = velocity(velo);
+  //If statement tjekker om enemy rammer væggen
   if(velo == -1 && valcom.colorL != pladeFarve && valcom.colorL != playerFarve){
-    print("mur");
+    //print("mur");
     velo = velocityCalc();
      if(velo == -1){
+       velo = correctVelX(velo);
+     }
+  }
+  if(velo == 1 && valcom.colorR != pladeFarve && valcom.colorR != playerFarve){
+    print("mur");
+    velo = velocityCalc();
+     if(velo == 1){
        velo = correctVelX(velo);
      }
   }
