@@ -22,9 +22,9 @@ class Enemy{
   
   Enemy(){
     this.size = 20;
-    //sætter spawn koordinat på enemy
-    this.xSpawn = 7;
-    this.ySpawn = 4;
+    //sætterrandom spawn koordinat på enemy
+    this.xSpawn = float(int(random(1,30)));
+    this.ySpawn = float(int(random(1,12)));
     this.y =  Grid.Size *5 +37.5;
     this.x =  37.5 +25 *6 ;
     this.vy = -1;
