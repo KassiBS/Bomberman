@@ -9,6 +9,17 @@ void setup(){
   size(775,325);
   //Viser player1 på kanvas
   Player1.show();
+  //forlykker spawner tjekker alle koordinater på pladen
+  for(int i = 1; i <30; i ++){
+    for(int j = 1; j < 12; j++){
+      if(i == valcom.xSpawn){
+        valcom.x = i * Grid.Size + Grid.Size/2;
+      }
+      if(j == valcom.ySpawn){
+        valcom.y = j * Grid.Size + Grid.Size/2;
+      }
+    }
+  }
 }
 
 void draw(){

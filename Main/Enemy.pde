@@ -4,6 +4,8 @@ class Enemy{
   int colorR;
   int colorL;
   
+  float xSpawn;
+  float ySpawn;
   float vx;
   float vy;
   float size;
@@ -20,6 +22,9 @@ class Enemy{
   
   Enemy(){
     this.size = 20;
+    //sætter spawn koordinat på enemy
+    this.xSpawn = 7;
+    this.ySpawn = 4;
     this.y =  Grid.Size *5 +37.5;
     this.x =  37.5 +25 *6 ;
     this.vy = -1;
@@ -27,6 +32,7 @@ class Enemy{
     this.eColorR = 240;
     this.eColorG = 137;
     this.eColorB = 19;
+    
   }
   
   void show(){

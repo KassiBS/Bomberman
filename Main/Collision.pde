@@ -236,7 +236,7 @@ float correctVelY(float velo){
     clear = false;
     velo = velocityCalc();
     if(velo == -1){
-      print("Forkert");
+      //print("Forkert");
       velo = correctVelY(velo);
     }
   }
