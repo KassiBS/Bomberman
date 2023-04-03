@@ -162,7 +162,7 @@ void afterBomb(){
          //valcom.vx = velocityCalc();
          //valcom.vy = velocity(valcom.vx);
          valcom.vy = correctVelY(valcom.vy);
-         
+         valcom.vx = correctVelX(valcom.vy);
      
        }
      }
@@ -223,5 +223,9 @@ float correctVelY(float velo){
       velo = correctVelY(velo);
     }
   }
+  return velo;
+}
+float correctVelX(float velo){
+  velo = velocity(velo);
   return velo;
 }
