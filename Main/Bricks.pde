@@ -5,6 +5,7 @@ class Bricks {
   int[] grid;
   float[] xLoc;
   float[] yLoc;
+  float[] BrickNum;
   int Counter;
   
   Bricks(){
@@ -14,6 +15,8 @@ class Bricks {
     //laver 100 pladser i xLoc og yLoc
     this.xLoc = new float[100];
     this.yLoc = new float[100];
+    //holder styr på hvilke pladser der er taget
+    this.BrickNum = new float[100];
     
     //giver arrayet 246 pladser og sætter alle false
     this.grid = new int[246];
@@ -44,6 +47,7 @@ class Bricks {
           rect(this.Size * n2 + (this.Size * 3), this.Size, this.Size, this.Size);
           this.xLoc[this.Counter] = this.Size * n2 + (this.Size * 3);
           this.yLoc[this.Counter] = this.Size;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }  
         if (this.grid[n2] == 2){
@@ -54,6 +58,7 @@ class Bricks {
           rect(this.Size * n2 + (this.Size * 3), this.Size, this.Size, this.Size);
           this.xLoc[this.Counter] = this.Size * n2 + (this.Size * 3);
           this.yLoc[this.Counter] = this.Size;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         } 
@@ -68,6 +73,7 @@ class Bricks {
           rect((this.Size * (n2 - 27) * 2) + (this.Size * 3), this.Size * 2, this.Size, this.Size);
           this.xLoc[this.Counter] = (this.Size * (n2 - 27) * 2) + (this.Size * 3);
           this.yLoc[this.Counter] = this.Size * 2;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }  
         if (this.grid[n2] == 2){
@@ -77,6 +83,7 @@ class Bricks {
           rect((this.Size * (n2 - 27) * 2) + (this.Size * 3), this.Size * 2, this.Size, this.Size);
           this.xLoc[this.Counter] = (this.Size * (n2 - 27) * 2) + (this.Size * 3);
           this.yLoc[this.Counter] = this.Size * 2;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }  
@@ -86,8 +93,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14)) + this.Size, this.Size * 3, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 3;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }
         if (this.grid[n2] == 2){
@@ -95,8 +103,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14)) + this.Size, this.Size * 3, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 3;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }
@@ -106,8 +115,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29) * 2) + this.Size, this.Size * 4, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 4;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }  
         if (this.grid[n2] == 2){
@@ -115,8 +125,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29) * 2) + this.Size, this.Size * 4, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 4;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }  
@@ -125,8 +136,9 @@ class Bricks {
         if (this.grid[n2] == 1){
           fill(200);
           rectMode(CORNER);rect((this.Size * (n2 - 27 - 14 - 29 - 15)) + this.Size, this.Size * 5, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 5;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }
         if (this.grid[n2] == 2){
@@ -134,8 +146,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15)) + this.Size, this.Size * 5, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 5;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }
@@ -145,8 +158,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29) * 2) + this.Size, this.Size * 6, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 6;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         } 
         if (this.grid[n2] == 2){
@@ -154,8 +168,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29) * 2) + this.Size, this.Size * 6, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 6;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         } 
@@ -165,8 +180,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15)) + this.Size, this.Size * 7, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 7;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }
         if (this.grid[n2] == 2){
@@ -174,8 +190,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15)) + this.Size, this.Size * 7, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 7;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }
@@ -185,8 +202,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size, this.Size * 8, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 8;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }  
         if (this.grid[n2] == 2){
@@ -194,8 +212,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size, this.Size * 8, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 8;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }  
@@ -205,8 +224,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size, this.Size * 9, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 9;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }
         if (this.grid[n2] == 2){
@@ -214,8 +234,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size, this.Size * 9, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 9;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }
@@ -225,8 +246,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size, this.Size * 10, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 10;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }  
         if (this.grid[n2] == 2){
@@ -234,8 +256,9 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size, this.Size * 10, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29) * 2) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29) * 2) + this.Size;
           this.yLoc[this.Counter] = this.Size * 10;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }  
@@ -245,8 +268,9 @@ class Bricks {
           fill(200);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size, this.Size * 11, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 11;
+          this.BrickNum[this.Counter] = n2;
           this.Counter = this.Counter + 1;
         }
         if (this.grid[n2] == 2){
@@ -254,14 +278,15 @@ class Bricks {
           fill(18, 201, 67);
           rectMode(CORNER);
           rect((this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size, this.Size * 11, this.Size, this.Size);
-          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29 - 15)) + (this.Size * 3);
+          this.xLoc[this.Counter] = (this.Size * (n2 - 27 - 14 - 29 - 15 - 29 - 15 - 29 - 15 - 29 - 15)) + this.Size;
           this.yLoc[this.Counter] = this.Size * 11;
+          this.BrickNum[this.Counter] = n2;
           stroke(0);
           this.Counter = this.Counter + 1;
         }
       }
-      this.Counter = 0;
     }
+    this.Counter = 0;
   } 
 }
   
