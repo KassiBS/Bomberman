@@ -5,6 +5,7 @@ ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
 Bricks CreateBricks = new Bricks();
 ArrayList<Enemy> valcom = new ArrayList<Enemy>();
 
+
 void setup(){
   size(775,325);
   //Viser player1 på kanvas
@@ -32,8 +33,8 @@ void draw(){
   rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
+  CreateBricks.show();
   Grid.show();
-  //CreateBricks.show();
   //Opdaterer kondition på player
   Player1.update();
   Kollider.beforeBomb();
