@@ -1,3 +1,6 @@
+int constant = 0;
+float[] kord = new float[2];
+
 Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
@@ -12,37 +15,39 @@ void setup(){
   Grid.show();
   CreateBricks.show();
   Player1.show();
-  for(int k = 0; k < 5; k++){
-    valcom.add(new Enemy());
-    Enemy temp = valcom.get(k);
-    
-    if(get(int(temp.xSpawn),int(temp.ySpawn)) != -15546045){
-      temp.xSpawn = float(int(random(1,30)));
-      temp.ySpawn = float(int(random(1,12)));
-      print(temp.xSpawn,temp.ySpawn);
-    }
-    //forlykker spawner tjekker alle koordinater på pladen
-    for(int i = 1; i <30; i ++){
-      for(int j = 1; j < 12; j++){
-        if(i == temp.xSpawn){
-          temp.x = i * Grid.Size + Grid.Size/2;
-        }
-        if(j == temp.ySpawn){
-          temp.y = j * Grid.Size + Grid.Size/2;
-        }
-      }
-    }
-  }
+  
   
 }
 
 void draw(){
-  
   rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
   Grid.show();
   CreateBricks.show();
+  if(constant == 0 ){
+    for(int k = 0; k < 5; k++){
+      valcom.add(new Enemy());
+      Enemy temp = valcom.get(k);
+      kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
+      
+      print(kord[0],kord[1]);
+      
+      //forlykker spawner tjekker alle koordinater på pladen
+      for(int i = 1; i <30; i ++){
+        for(int j = 1; j < 12; j++){
+          if(i == temp.xSpawn){
+            temp.x = i * Grid.Size + Grid.Size/2;
+          }
+          if(j == temp.ySpawn){
+            temp.y = j * Grid.Size + Grid.Size/2;
+          }
+        }
+      }
+    }
+    constant = 1;
+  }
+  
   //Opdaterer kondition på player
   Player1.update();
   Kollider.beforeBomb();
@@ -88,8 +93,12 @@ void keyPressed(){
   }
 }
 
-float CorrectLoc(float x,float y){
+float[] CorrectLoc(float x,float y){
+  float[] koordinater = new float[2];
+  koordinater[0] = x;
+  koordinater[1] = y;
   
-  
-  return x;
+  return koordinater;
 }
+
+float 
