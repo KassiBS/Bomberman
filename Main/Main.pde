@@ -8,10 +8,19 @@ ArrayList<Enemy> valcom = new ArrayList<Enemy>();
 void setup(){
   size(775,325);
   //Viser player1 på kanvas
+  background(18, 201, 67);
+  Grid.show();
+  CreateBricks.show();
   Player1.show();
-  for(int k = 0; k < 1; k++){
+  for(int k = 0; k < 5; k++){
     valcom.add(new Enemy());
     Enemy temp = valcom.get(k);
+    
+    if(get(int(temp.xSpawn),int(temp.ySpawn)) != -15546045){
+      temp.xSpawn = float(int(random(1,30)));
+      temp.ySpawn = float(int(random(1,12)));
+      print(temp.xSpawn,temp.ySpawn);
+    }
     //forlykker spawner tjekker alle koordinater på pladen
     for(int i = 1; i <30; i ++){
       for(int j = 1; j < 12; j++){
@@ -33,7 +42,7 @@ void draw(){
   //Baggrundsfarve er grøn
   background(18, 201, 67);
   Grid.show();
-  //CreateBricks.show();
+  CreateBricks.show();
   //Opdaterer kondition på player
   Player1.update();
   Kollider.beforeBomb();
@@ -77,4 +86,10 @@ void keyPressed(){
        } 
     }
   }
+}
+
+float CorrectLoc(float x,float y){
+  
+  
+  return x;
 }
