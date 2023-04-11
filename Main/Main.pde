@@ -12,8 +12,6 @@ void setup(){
   size(775,325);
   //Viser player1 på kanvas
   background(18, 201, 67);
-  Grid.show();
-  CreateBricks.show();
   Player1.show();
   
   
@@ -25,14 +23,14 @@ void draw(){
   background(18, 201, 67);
   Grid.show();
   CreateBricks.show();
-  if(constant == 0 ){
-    for(int k = 0; k < 5; k++){
+  if(constant <1 ){
+    for(int k = 0; k < 1; k++){
       valcom.add(new Enemy());
       Enemy temp = valcom.get(k);
+      //kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
+      
       kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
-      
       print(kord[0],kord[1]);
-      
       //forlykker spawner tjekker alle koordinater på pladen
       for(int i = 1; i <30; i ++){
         for(int j = 1; j < 12; j++){
@@ -44,8 +42,9 @@ void draw(){
           }
         }
       }
+      
     }
-    constant = 1;
+    constant += 1;
   }
   
   //Opdaterer kondition på player
@@ -96,9 +95,9 @@ void keyPressed(){
 float[] CorrectLoc(float x,float y){
   float[] koordinater = new float[2];
   koordinater[0] = x;
-  koordinater[1] = y;
-  
+  koordinater[1] = y ;
+  if(get(int(koordinater[0]* Grid.Size + Grid.Size/2),int(koordinater[1]* Grid.Size + Grid.Size/2)) != -15546045){
+    print("hej")
+  }
   return koordinater;
 }
-
-float 
