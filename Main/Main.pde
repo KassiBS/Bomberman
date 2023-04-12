@@ -24,13 +24,14 @@ void draw(){
   Grid.show();
   CreateBricks.show();
   if(constant <1 ){
-    for(int k = 0; k < 1; k++){
+    for(int k = 0; k < 20; k++){
       valcom.add(new Enemy());
       Enemy temp = valcom.get(k);
       //kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
-      
-      kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
+      kord = CorrectLoc();
       print(kord[0],kord[1]);
+      temp.xSpawn = kord[0];
+      temp.ySpawn = kord[1];
       //forlykker spawner tjekker alle koordinater på pladen
       for(int i = 1; i <30; i ++){
         for(int j = 1; j < 12; j++){
@@ -91,13 +92,16 @@ void keyPressed(){
     }
   }
 }
-
-float[] CorrectLoc(float x,float y){
+// funktion giver to koordinater tilbage i arraylist
+float[] CorrectLoc(){
   float[] koordinater = new float[2];
-  koordinater[0] = x;
-  koordinater[1] = y ;
+  //angiver et tilfældigt koordinat
+  koordinater[0] = float(int(random(1,30)));
+  koordinater[1] = float(int(random(1,12)));
   if(get(int(koordinater[0]* Grid.Size + Grid.Size/2),int(koordinater[1]* Grid.Size + Grid.Size/2)) != -15546045){
-    print("hej")
+    koordinater = CorrectLoc();
+    
   }
+
   return koordinater;
 }

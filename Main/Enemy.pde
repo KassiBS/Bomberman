@@ -23,8 +23,8 @@ class Enemy{
   Enemy(){
     this.size = 20;
     //sætterrandom spawn koordinat på enemy
-    this.xSpawn = float(int(random(1,30)));
-    this.ySpawn = float(int(random(1,12)));
+    //this.xSpawn = float(int(random(1,30)));
+    //this.ySpawn = float(int(random(1,12)));
     this.health = true;
     this.vy = 0;
     this.vx = 0;
