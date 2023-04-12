@@ -1,4 +1,5 @@
 int pladeFarve = -15546045;
+int gridFarve = -6908266;
 int bombeFarve = -1433747;
 int explosionsFarve = -683444;
 int valcomFarve = -1013485;
@@ -61,7 +62,7 @@ class Collision{
       if(temp.radiusR < temp.radiusMax){
         blockColorR = get(int(temp.x + Grid.Size + temp.radiusR * Grid.Size), int(temp.y));
         //if statement tjekker om farven er grøn
-        if(blockColorR == pladeFarve){
+        if(blockColorR != gridFarve){
           temp.radiusR += 1;
         }
       }
@@ -69,7 +70,7 @@ class Collision{
       if(temp.radiusL < temp.radiusMax){
         blockColorL = get(int(temp.x - Grid.Size - temp.radiusL * Grid.Size), int(temp.y));
         //if statement tjekker om farven er grøn
-        if(blockColorL == pladeFarve){
+        if(blockColorL != gridFarve){
           temp.radiusL += 1;
         }
       }
@@ -77,7 +78,7 @@ class Collision{
       if(temp.radiusD < temp.radiusMax){
         blockColorD = get(int(temp.x), int(temp.y + Grid.Size + temp.radiusD * Grid.Size));
         //if statement tjekker om farven er grøn
-        if(blockColorD == pladeFarve){
+        if(blockColorD != gridFarve){
           temp.radiusD += 1;
         }
       }
@@ -85,7 +86,7 @@ class Collision{
       if(temp.radiusT < temp.radiusMax){
         blockColorT= get(int(temp.x), int(temp.y - Grid.Size - temp.radiusT * Grid.Size));
         //if statement tjekker om farven er grøn
-        if(blockColorT == pladeFarve){
+        if(blockColorT != gridFarve){
           temp.radiusT += 1;
         }
       }
@@ -94,6 +95,12 @@ class Collision{
   }
   
 void afterBomb(){
+  //COLLISION MELLEM EKSPLOSION OG BRICKS
+    for(int n = 0; n < 100; n++){
+      if(get(int(CreateBricks.xLoc[n] + 12), int(CreateBricks.yLoc[n] + 12)) == explosionsFarve){
+          CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+        }
+      }
    //COLLISION MELLEM BOMBE OG PLAYER
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){

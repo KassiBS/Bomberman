@@ -8,6 +8,7 @@ ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
 Bricks CreateBricks = new Bricks();
 ArrayList<Enemy> valcom = new ArrayList<Enemy>();
 
+
 void setup(){
   size(775,325);
   //Viser player1 på kanvas
@@ -21,10 +22,11 @@ void draw(){
   rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
+  CreateBricks.show();
   Grid.show();
   CreateBricks.show();
   if(constant <1 ){
-    for(int k = 0; k < 20; k++){
+    for(int k = 0; k < 10; k++){
       valcom.add(new Enemy());
       Enemy temp = valcom.get(k);
       //kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
@@ -98,7 +100,7 @@ float[] CorrectLoc(){
   //angiver et tilfældigt koordinat
   koordinater[0] = float(int(random(1,30)));
   koordinater[1] = float(int(random(1,12)));
-  if(get(int(koordinater[0]* Grid.Size + Grid.Size/2),int(koordinater[1]* Grid.Size + Grid.Size/2)) != -15546045){
+  if(get(int(koordinater[0]* Grid.Size + Grid.Size/2),int(koordinater[1]* Grid.Size + Grid.Size/2)) != -15546045 || koordinater[0]* Grid.Size + Grid.Size/2 < Grid.Size * 4 && koordinater[1]* Grid.Size + Grid.Size/2 < Grid.Size * 4){
     koordinater = CorrectLoc();
     
   }
