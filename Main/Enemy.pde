@@ -6,11 +6,13 @@ class Enemy{
   
   float xSpawn;
   float ySpawn;
+  float v;
   float vx;
   float vy;
   float size;
   float x;
   float y;
+  
   
   boolean health;
   
@@ -26,6 +28,7 @@ class Enemy{
     //this.xSpawn = float(int(random(1,30)));
     //this.ySpawn = float(int(random(1,12)));
     this.health = true;
+    this.v = 2;
     this.vy = 0;
     this.vx = 0;
     this.eColorR = 240;
@@ -55,5 +58,6 @@ class Enemy{
     //opdatere enemy's placering
     this.x += this.vx;
     this.y += this.vy;
+    print(" "+this.x,this.y+" ");
   }
 }

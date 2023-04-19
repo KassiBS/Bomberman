@@ -173,6 +173,9 @@ void afterBomb(){
        for(int j = 1; j <12; j++){
          // if statement tjekker enemy condtition på midten af hver block
          if (temp.x == Grid.Size * i + Grid.Size/2 && temp.y == Grid.Size * j + Grid.Size/2){
+           temp.vx = temp.vx/temp.v;
+           temp.vy = temp.vy/temp.v;
+           
            // giver tilfældig x hastighed
            temp.vx = velocityCalc();
            // giver tilfældig x-værdi på baggrund af y-værdien
@@ -180,7 +183,9 @@ void afterBomb(){
            // de to funktioner tjekker om at de ikke rammer muren og retter op på det
            temp.vy = correctVelY(temp.vy,temp.colorD,temp.colorT);
            temp.vx = correctVelX(temp.vy,temp.colorR,temp.colorL);
-       
+           
+           temp.vx = temp.vx * temp.v;
+           temp.vy = temp.vy * temp.v;
          }
        }
       }
