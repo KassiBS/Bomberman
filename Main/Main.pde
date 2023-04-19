@@ -1,6 +1,9 @@
 int constant = 0;
 float[] kord = new float[2];
 
+int interval = 200000;
+int timeStamp = 0;
+
 Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
@@ -15,7 +18,7 @@ void setup(){
   background(18, 201, 67);
   Player1.show();
   
-  
+  timeStamp = millis();
 }
 
 void draw(){
@@ -26,12 +29,11 @@ void draw(){
   Grid.show();
   CreateBricks.show();
   if(constant <1 ){
-    for(int k = 0; k < 10; k++){
+    for(int k = 0; k < 5; k++){
       valcom.add(new Enemy());
       Enemy temp = valcom.get(k);
       //kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
       kord = CorrectLoc();
-      print(kord[0],kord[1]);
       temp.xSpawn = kord[0];
       temp.ySpawn = kord[1];
       //forlykker spawner tjekker alle koordinater på pladen
@@ -78,6 +80,11 @@ void draw(){
   }
   
   Kollider.afterBomb();
+  
+  if(millis() - timeStamp > interval){
+      print("hej");
+      timeStamp = millis();
+    }
 }
 
 void keyPressed(){
