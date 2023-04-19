@@ -4,8 +4,6 @@ class Enemy{
   int colorR;
   int colorL;
   
-  float xSpawn;
-  float ySpawn;
   float v;
   float vx;
   float vy;
@@ -13,6 +11,8 @@ class Enemy{
   float x;
   float y;
   
+  float xSpawn;
+  float ySpawn;
   
   boolean health;
   
@@ -24,11 +24,8 @@ class Enemy{
   
   Enemy(){
     this.size = 20;
-    //sætterrandom spawn koordinat på enemy
-    //this.xSpawn = float(int(random(1,30)));
-    //this.ySpawn = float(int(random(1,12)));
     this.health = true;
-    this.v = 2;
+    this.v = 1;
     this.vy = 0;
     this.vx = 0;
     this.eColorR = 240;
@@ -58,6 +55,5 @@ class Enemy{
     //opdatere enemy's placering
     this.x += this.vx;
     this.y += this.vy;
-    print(" "+this.x,this.y+" ");
   }
 }

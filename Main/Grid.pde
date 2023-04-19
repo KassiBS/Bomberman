@@ -7,6 +7,7 @@ class MakeGrid{
   float YLocRight;
   float YLocLeft;
   float XLocBottom;
+
   
   MakeGrid(){
    this.Size = 25;

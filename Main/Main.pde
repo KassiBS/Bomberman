@@ -1,7 +1,8 @@
 int constant = 0;
+int constant2 = 0;
 float[] kord = new float[2];
 
-int interval = 200000;
+int interval = 20000;
 int timeStamp = 0;
 int timer;
 boolean timerFærdig = false;
@@ -29,6 +30,11 @@ void draw(){
   background(18, 201, 67);
   CreateBricks.show();
   Grid.show();
+  if(timerFærdig == true && constant2 < 1){
+    ArrayList<Pontan> valcom = new ArrayList<Pontan>();
+    print("pontan");
+    constant2 += 1;
+  }
   
   if(constant <1 ){
     for(int k = 0; k < 5; k++){
@@ -95,7 +101,7 @@ void draw(){
    textAlign(LEFT,CENTER);
    fill(0);
    
-   text(timer,Grid.Size,Grid.Size/2 -4);
+   text("TIME " + timer,Grid.Size,Grid.Size/2 -4);
 }
 
 void keyPressed(){
