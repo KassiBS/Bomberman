@@ -2,7 +2,7 @@ int constant = 0;
 int constant2 = 0;
 float[] kord = new float[2];
 
-int interval = 20000;
+int interval = 10000;
 int timeStamp = 0;
 int timer;
 boolean timerFærdig = false;
@@ -13,6 +13,7 @@ Collision Kollider = new Collision();
 ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
 Bricks CreateBricks = new Bricks();
 ArrayList<Enemy> valcom = new ArrayList<Enemy>();
+ArrayList<Pontan> pontan = new ArrayList<Pontan>();
 
 
 void setup(){
@@ -31,40 +32,50 @@ void draw(){
   CreateBricks.show();
   Grid.show();
   
-  //if statement tjekker om timeren er færdig
-  if(timerFærdig == true && constant2 < 1){
-    //laver en arrayliste med pontan klassen
-    ArrayList<Pontan> valcom = new ArrayList<Pontan>();
-    print("pontan");
-    constant2 += 1;
-    // sætter konstant til 0 så at den kører nedstående if statement igen
-    constant -=1;
-  }
-  
   if(constant <1 ){
     for(int k = 0; k < 5; k++){
-      valcom.add(new Enemy());
-      Enemy temp = valcom.get(k);
-      //kord = CorrectLoc(temp.xSpawn,temp.ySpawn);
-      kord = CorrectLoc();
-      temp.xSpawn = kord[0];
-      temp.ySpawn = kord[1];
-      //forlykker spawner tjekker alle koordinater på pladen
-      for(int i = 1; i <30; i ++){
-        for(int j = 1; j < 12; j++){
-          if(i == temp.xSpawn){
-            temp.x = i * Grid.Size + Grid.Size/2;
-          }
-          if(j == temp.ySpawn){
-            temp.y = j * Grid.Size + Grid.Size/2;
+        valcom.add(new Enemy());
+        Enemy temp = valcom.get(k);
+        kord = CorrectLoc();
+        temp.xSpawn = kord[0];
+        temp.ySpawn = kord[1];
+        
+        //forlykker spawner tjekker alle koordinater på pladen
+        for(int i = 1; i <30; i ++){
+          for(int j = 1; j < 12; j++){
+            if(i == temp.xSpawn){
+              temp.x = i * Grid.Size + Grid.Size/2;
+            }
+            if(j == temp.ySpawn){
+              temp.y = j * Grid.Size + Grid.Size/2;
+            }
           }
         }
-      }
-      
     }
     constant += 1;
   }
   
+  if(constant2 <1 && timerFærdig == true){
+    for(int k = 0; k < 5; k++){
+        pontan.add(new Pontan());
+        Pontan temp = pontan.get(k);
+        kord = CorrectLoc();
+        temp.xSpawn = kord[0];
+        temp.ySpawn = kord[1];
+        //forlykker spawner tjekker alle koordinater på pladen
+        for(int i = 1; i <30; i ++){
+          for(int j = 1; j < 12; j++){
+            if(i == temp.xSpawn){
+              temp.x = i * Grid.Size + Grid.Size/2;
+            }
+            if(j == temp.ySpawn){
+              temp.y = j * Grid.Size + Grid.Size/2;
+            }
+          }
+        }
+    }
+    constant2 += 1;
+  }
   //Opdaterer kondition på player
   Player1.update();
   Kollider.beforeBomb();
@@ -91,7 +102,20 @@ void draw(){
       valcom.remove(i);
     }
   }
-  
+  if(timerFærdig == true){
+    print(pontan.size());
+    for(int i = 0; i < pontan.size(); i++){
+      print(i);
+      Pontan temp = pontan.get(i);
+      temp.checkColor();
+      temp.show();
+      temp.update();
+      if(temp.health == false){
+        pontan.remove(i);
+      }
+    }
+  }
+    
   Kollider.afterBomb();
   //timer er den værdi der vises på spillerbrættet
   timer = interval/1000-millis()/1000;

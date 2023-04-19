@@ -3,7 +3,7 @@ class Pontan extends Enemy{
   Pontan(){
     this.size = 20;
     this.health = true;
-    this.v = 1;
+    this.v = 2.5;
     this.vy = 0;
     this.vx = 0;
     this.eColorR = 219;
