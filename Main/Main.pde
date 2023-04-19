@@ -18,10 +18,7 @@ ArrayList<Pontan> pontan = new ArrayList<Pontan>();
 
 void setup(){
   size(775,325);
-  //Viser player1 på kanvas
-  background(18, 201, 67);
   Player1.show();
-  
   timeStamp = millis();
 }
 
@@ -55,8 +52,11 @@ void draw(){
     constant += 1;
   }
   
+  // if statement tjekker om timer er gået og om constant2 er mindre end 1
   if(constant2 <1 && timerFærdig == true){
-    for(int k = 0; k < 5; k++){
+    //ændre valcom farve til pontan farve
+    valcomFarve = -2414809;
+    for(int k = 0; k < 8; k++){
         pontan.add(new Pontan());
         Pontan temp = pontan.get(k);
         kord = CorrectLoc();
@@ -103,9 +103,7 @@ void draw(){
     }
   }
   if(timerFærdig == true){
-    print(pontan.size());
     for(int i = 0; i < pontan.size(); i++){
-      print(i);
       Pontan temp = pontan.get(i);
       temp.checkColor();
       temp.show();

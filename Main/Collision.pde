@@ -191,6 +191,44 @@ void afterBomb(){
       }
    }
     
+    for(int k = 0; k < pontan.size(); k++){
+     Pontan temp = pontan.get(k);
+     //COLLISION MELLEM PONTAN OG EKSPLOSION
+     //Sætter tjeksize udenfor enemy
+     temp.checkSize = temp.size/2;
+     temp.checkColor();
+     //if statement tjekker om valcom bliver ramt af eksplosion
+     if(temp.colorT == explosionsFarve || temp.colorD == explosionsFarve|| temp.colorR == explosionsFarve|| temp.colorL == explosionsFarve){
+       temp.health = false;
+       print(temp.checkSize);
+     }
+     //COLLISION MELLEM PONTAN OG BRICKS
+     //Angiver at valcom skal lave tjeksize med 1 block
+     temp.checkSize = Grid.Size;
+     temp.checkColor();
+     // to forlykker gør at den tjekker condition for pontan for alle blocks
+     for(int i = 1; i < 30; i++){
+       for(int j = 1; j <12; j++){
+         // if statement tjekker pontan condtition på midten af hver block
+         if (temp.x == Grid.Size * i + Grid.Size/2 && temp.y == Grid.Size * j + Grid.Size/2){
+           temp.vx = temp.vx/temp.v;
+           temp.vy = temp.vy/temp.v;
+           
+           // giver tilfældig x hastighed
+           temp.vx = velocityCalc();
+           // giver tilfældig x-værdi på baggrund af y-værdien
+           temp.vy = velocity(temp.vx);
+           // de to funktioner tjekker om at de ikke rammer muren og retter op på det
+           temp.vy = correctVelY(temp.vy,temp.colorD,temp.colorT);
+           temp.vx = correctVelX(temp.vy,temp.colorR,temp.colorL);
+           
+           temp.vx = temp.vx * temp.v;
+           temp.vy = temp.vy * temp.v;
+         }
+       }
+      }
+   }
+    
   }
 }
 
