@@ -1,9 +1,10 @@
 int constant = 0;
 float[] kord = new float[2];
 
-int interval = 10000;
+int interval = 200000;
 int timeStamp = 0;
 int timer;
+boolean timerFærdig = false;
 
 Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
@@ -75,19 +76,26 @@ void draw(){
     temp.checkColor();
     temp.show();
     temp.update();
-    if(temp.health == false){
+    if(temp.health == false || timerFærdig == true){
       valcom.remove(i);
     }
   }
   
   Kollider.afterBomb();
+  //timer er den værdi der vises på spillerbrættet
+  timer = interval/1000-millis()/1000;
+  //if statement tjekker om der er gået 200 minutter
   if(millis() - timeStamp > interval){
-      interval = millis();
+    //sætter timer til 0
+      timer = 0;
+      //sætter timerFærdig = true og alle valcom instanser bliver fjernet
+      timerFærdig = true;
     }
    textSize(20);
    textAlign(LEFT,CENTER);
    fill(0);
-   text(interval/1000-millis()/1000,Grid.Size,Grid.Size/2 -4);
+   
+   text(timer,Grid.Size,Grid.Size/2 -4);
 }
 
 void keyPressed(){
