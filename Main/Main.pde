@@ -2,7 +2,7 @@ int constant = 0;
 int constant2 = 0;
 float[] kord = new float[2];
 
-int interval = 10000;
+int interval = 200000;
 int timeStamp = 0;
 int timer;
 boolean timerFærdig = false;
