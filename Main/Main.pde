@@ -1,8 +1,9 @@
 int constant = 0;
 float[] kord = new float[2];
 
-int interval = 200000;
+int interval = 10000;
 int timeStamp = 0;
+int timer;
 
 Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
@@ -27,7 +28,7 @@ void draw(){
   background(18, 201, 67);
   CreateBricks.show();
   Grid.show();
-  CreateBricks.show();
+  
   if(constant <1 ){
     for(int k = 0; k < 5; k++){
       valcom.add(new Enemy());
@@ -80,11 +81,13 @@ void draw(){
   }
   
   Kollider.afterBomb();
-  
   if(millis() - timeStamp > interval){
-      print("hej");
-      timeStamp = millis();
+      interval = millis();
     }
+   textSize(20);
+   textAlign(LEFT,CENTER);
+   fill(0);
+   text(interval/1000-millis()/1000,Grid.Size,Grid.Size/2 -4);
 }
 
 void keyPressed(){
