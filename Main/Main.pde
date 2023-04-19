@@ -30,10 +30,15 @@ void draw(){
   background(18, 201, 67);
   CreateBricks.show();
   Grid.show();
+  
+  //if statement tjekker om timeren er færdig
   if(timerFærdig == true && constant2 < 1){
+    //laver en arrayliste med pontan klassen
     ArrayList<Pontan> valcom = new ArrayList<Pontan>();
     print("pontan");
     constant2 += 1;
+    // sætter konstant til 0 så at den kører nedstående if statement igen
+    constant -=1;
   }
   
   if(constant <1 ){
