@@ -4,6 +4,10 @@ int bombeFarve = -1433747;
 int explosionsFarve = -683444;
 int valcomFarve = -1013485;
 int playerFarve = -6886657;
+int powerupFarve = -256;
+int exitFarve = -13757689;
+
+int BrickCounter = 0;
 
 class Collision{
   int colorDR;
@@ -15,6 +19,11 @@ class Collision{
   int colorT;
   int colorR;
   int colorL;
+  
+  int colorD2;
+  int colorT2;
+  int colorR2;
+  int colorL2;
   
   int blockColorR;
   int blockColorL;
@@ -53,13 +62,65 @@ class Collision{
         Player1.x -=1;
       }
     }
+    
+    colorR2 = get(int(Player1.x + Player1.size/2) + 1,int(Player1.y));
+    colorL2 = get(int(Player1.x - Player1.size/2) - 1,int(Player1.y));
+    colorT2 = get(int(Player1.x),int(Player1.y + Player1.size/2) + 1);
+    colorD2 = get(int(Player1.x),int(Player1.y - Player1.size/2) - 1);
+    
+    if(colorR2 == exitFarve){
+      End.WinCheck = true;
+    }
+    if(colorL2 == exitFarve){
+      End.WinCheck = true;
+    }
+    if(colorT2 == exitFarve){
+      End.WinCheck = true;
+    }
+    if(colorD2 == exitFarve){
+      End.WinCheck = true;
+    }
+    
+    if(colorR2 == powerupFarve){
+      Powerup.HaveBSM = true;
+      for(int i = 0; i < 246; i++){
+        if(CreateBricks.grid[i] == 3){
+          CreateBricks.grid[i] = 5;
+        }
+      }
+    }
+    if(colorL2 == powerupFarve){
+      Powerup.HaveBSM = true;
+      for(int i = 0; i < 246; i++){
+        if(CreateBricks.grid[i] == 3){
+          CreateBricks.grid[i] = 5;
+        }
+      }
+    }
+    if(colorT2 == powerupFarve){
+      Powerup.HaveBSM = true;
+      for(int i = 0; i < 246; i++){
+        if(CreateBricks.grid[i] == 3){
+          CreateBricks.grid[i] = 5;
+        }
+      }
+    }
+    if(colorD2 == powerupFarve){
+      Powerup.HaveBSM = true;
+      for(int i = 0; i < 246; i++){
+        if(CreateBricks.grid[i] == 3){
+          CreateBricks.grid[i] = 5;
+        }
+      }
+    }
+
 
    //COLLISION FOR EXPLOSION
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){
       Bomb temp = Bombe.get(i);
       //if statement tjekker om radius er mindre end max radius 
-      if(temp.radiusR < temp.radiusMax){
+      if(temp.radiusR < temp.radiusMax * Powerup.BombSizeMod){
         blockColorR = get(int(temp.x + Grid.Size + temp.radiusR * Grid.Size), int(temp.y));
         //if statement tjekker om farven er grøn
         if(blockColorR != gridFarve){
@@ -67,7 +128,7 @@ class Collision{
         }
       }
       //if statement tjekker om radius er mindre end max radius 
-      if(temp.radiusL < temp.radiusMax){
+      if(temp.radiusL < temp.radiusMax * Powerup.BombSizeMod){
         blockColorL = get(int(temp.x - Grid.Size - temp.radiusL * Grid.Size), int(temp.y));
         //if statement tjekker om farven er grøn
         if(blockColorL != gridFarve){
@@ -75,7 +136,7 @@ class Collision{
         }
       }
       //if statement tjekker om radius er mindre end max radius 
-      if(temp.radiusD < temp.radiusMax){
+      if(temp.radiusD < temp.radiusMax * Powerup.BombSizeMod){
         blockColorD = get(int(temp.x), int(temp.y + Grid.Size + temp.radiusD * Grid.Size));
         //if statement tjekker om farven er grøn
         if(blockColorD != gridFarve){
@@ -83,24 +144,72 @@ class Collision{
         }
       }
       //if statement tjekker om radius er mindre end max radius 
-      if(temp.radiusT < temp.radiusMax){
+      if(temp.radiusT < temp.radiusMax * Powerup.BombSizeMod){
         blockColorT= get(int(temp.x), int(temp.y - Grid.Size - temp.radiusT * Grid.Size));
         //if statement tjekker om farven er grøn
         if(blockColorT != gridFarve){
           temp.radiusT += 1;
         }
       }
-   }
+    }
 
   }
   
 void afterBomb(){
   //COLLISION MELLEM EKSPLOSION OG BRICKS
+  Powerup.Check = false;
+  End.Check = false;
+    for(int i = 0; i < 246; i++){
+      if(CreateBricks.grid[i] == 3 || CreateBricks.grid[i] == 5){
+        Powerup.Check = true;
+      }
+    }  
+    for(int i = 0; i < 246; i++){
+      if(CreateBricks.grid[i] == 4){
+        End.Check = true;
+      }
+    } 
+
     for(int n = 0; n < 100; n++){
-      if(get(int(CreateBricks.xLoc[n] + 12), int(CreateBricks.yLoc[n] + 12)) == explosionsFarve){
-          CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+      for(int i = 0; i < 246; i++){
+        if(CreateBricks.grid[i] == 1){
+          BrickCounter += 1;
         }
       }
+    
+      if(get(int(CreateBricks.xLoc[n] + 12), int(CreateBricks.yLoc[n] + 12)) == explosionsFarve){
+        
+        float Randomizer = random(0, BrickCounter + 1);
+        if (Randomizer < 1){
+          if (End.Check == false){
+            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 4;
+          }
+          if (End.Check == true){
+            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+          }
+        }
+        if (Randomizer > 1 && Randomizer < 2){
+          if (Powerup.Check == false){
+            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 3;
+          }
+          if (Powerup.Check == true){
+            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+          }
+        }
+        if (Randomizer > 2){
+          CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+        }
+        for(int i = 0; i < 246; i++){
+          if(CreateBricks.grid[i] == 3 || CreateBricks.grid[i] == 5){
+            Powerup.Check = true;
+          }
+          if(CreateBricks.grid[i] == 4){
+            End.Check = true;
+          }
+        }
+      }
+      BrickCounter = 0;
+    }
    //COLLISION MELLEM BOMBE OG PLAYER
    //forlykke henter bombe instans nummer i
    for(int i = 0; i < Bombe.size(); i++){

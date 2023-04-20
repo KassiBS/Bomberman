@@ -14,6 +14,8 @@ ArrayList<Bomb> Bombe = new ArrayList<Bomb>();
 Bricks CreateBricks = new Bricks();
 ArrayList<Enemy> valcom = new ArrayList<Enemy>();
 ArrayList<Pontan> pontan = new ArrayList<Pontan>();
+Powerups Powerup = new Powerups();
+Victory End = new Victory();
 
 
 void setup(){
@@ -26,6 +28,8 @@ void draw(){
   rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
+  End.show();
+  Powerup.show();
   CreateBricks.show();
   Grid.show();
   
@@ -136,7 +140,7 @@ void keyPressed(){
   if(Player1.health){
     if (key == 'x'|| key == 'X'){
       //if statement tjekker om der er færre bomber placeret en det maximumme antal bomber der kan placeres
-        if(Player1.bombPlaced < Player1.bombNr){
+        if(Player1.bombPlaced < Player1.bombNr * Powerup.BombAmountMod){
         Bombe.add(new Bomb());
         //Der bliver lagt 1 til antal bomber placeret
         Player1.bombPlaced += 1;
