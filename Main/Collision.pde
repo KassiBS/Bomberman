@@ -68,6 +68,7 @@ class Collision{
     colorT2 = get(int(Player1.x),int(Player1.y + Player1.size/2) + 1);
     colorD2 = get(int(Player1.x),int(Player1.y - Player1.size/2) - 1);
     
+    //COLLISION mellem EXIT og PLAYER
     if(colorR2 == exitFarve){
       End.WinCheck = true;
     }
@@ -81,11 +82,13 @@ class Collision{
       End.WinCheck = true;
     }
     
+    //COLLISION mellem POWERUP og PLAYER
     if(colorR2 == powerupFarve){
       Powerup.HaveBSM = true;
       for(int i = 0; i < 246; i++){
         if(CreateBricks.grid[i] == 3){
           CreateBricks.grid[i] = 5;
+          Points += 1000;
         }
       }
     }
@@ -94,6 +97,7 @@ class Collision{
       for(int i = 0; i < 246; i++){
         if(CreateBricks.grid[i] == 3){
           CreateBricks.grid[i] = 5;
+          Points += 1000;
         }
       }
     }
@@ -102,6 +106,7 @@ class Collision{
       for(int i = 0; i < 246; i++){
         if(CreateBricks.grid[i] == 3){
           CreateBricks.grid[i] = 5;
+          Points += 1000;
         }
       }
     }
@@ -110,6 +115,7 @@ class Collision{
       for(int i = 0; i < 246; i++){
         if(CreateBricks.grid[i] == 3){
           CreateBricks.grid[i] = 5;
+          Points += 1000;
         }
       }
     }
@@ -272,6 +278,7 @@ void afterBomb(){
      if(temp.colorT == explosionsFarve || temp.colorD == explosionsFarve|| temp.colorR == explosionsFarve|| temp.colorL == explosionsFarve){
        temp.health = false;
        print(temp.checkSize);
+       Points += 100;
      }
      //COLLISION MELLEM ENEMY OG BRICKS
      //Angiver at valcom skal lave tjeksize med 1 block
@@ -310,6 +317,7 @@ void afterBomb(){
      if(temp.colorT == explosionsFarve || temp.colorD == explosionsFarve|| temp.colorR == explosionsFarve|| temp.colorL == explosionsFarve){
        temp.health = false;
        print(temp.checkSize);
+       Points += 8000;
      }
      //COLLISION MELLEM PONTAN OG BRICKS
      //Angiver at valcom skal lave tjeksize med 1 block

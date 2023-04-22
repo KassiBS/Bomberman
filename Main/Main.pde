@@ -7,6 +7,8 @@ int timeStamp = 0;
 int timer;
 boolean timerFærdig = false;
 
+int Points = 0;
+
 Bomberman Player1 = new Bomberman();
 MakeGrid Grid = new MakeGrid();
 Collision Kollider = new Collision();
@@ -28,7 +30,6 @@ void draw(){
   rectMode(CENTER);
   //Baggrundsfarve er grøn
   background(18, 201, 67);
-  End.show();
   Powerup.show();
   CreateBricks.show();
   Grid.show();
@@ -133,6 +134,11 @@ void draw(){
    fill(0);
    
    text("TIME " + timer,Grid.Size,Grid.Size/2 -4);
+   
+   textAlign(CENTER,CENTER);
+   text(Points, Grid.Size * 15,Grid.Size/2 -4);
+   
+   End.show();
 }
 
 void keyPressed(){

@@ -6,12 +6,15 @@ class Powerups{
   int BombAmountMod;
   int BombSizeMod;
   
+  float Randomizer;
+  
   Powerups(){
     this.Check = false;
     this.HaveBAM = false;
     this.HaveBSM = false;
     BombAmountMod = 1;
     BombSizeMod = 1;
+    Randomizer = random(0, 2);
   }
   
   void show(){
