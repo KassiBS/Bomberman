@@ -30,10 +30,7 @@ class Bomberman{
   }
   
   void update(){
-    //print(this.x);
-    //print(" "+this.y);
       //Note: Har fikset rectMode(CENTER)
-    if (Player1.health == true){
       rectMode(CENTER);
       fill(150, 234, 255);
       noStroke();
@@ -56,6 +53,5 @@ class Bomberman{
             this.x = this.x + this.v;
           }
       } 
-    }
   }
 }
