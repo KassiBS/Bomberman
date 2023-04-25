@@ -184,33 +184,34 @@ void afterBomb(){
       }
     
       if(get(int(CreateBricks.xLoc[n] + 12), int(CreateBricks.yLoc[n] + 12)) == explosionsFarve){
-        
-        float Randomizer = random(0, BrickCounter + 1);
-        if (Randomizer < 1){
-          if (End.Check == false){
-            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 4;
+        if(CreateBricks.grid[int(CreateBricks.BrickNum[n])] == 1) {
+          float Randomizer = random(0, BrickCounter + 1);
+          if (Randomizer < 1){
+            if (End.Check == false){
+              CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 4;
+            }
+            if (End.Check == true){
+              CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+            }
           }
-          if (End.Check == true){
+          if (Randomizer > 1 && Randomizer < 2){
+            if (Powerup.Check == false){
+              CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 3;
+            }
+            if (Powerup.Check == true){
+              CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
+            }
+          }
+          if (Randomizer > 2){
             CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
           }
-        }
-        if (Randomizer > 1 && Randomizer < 2){
-          if (Powerup.Check == false){
-            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 3;
-          }
-          if (Powerup.Check == true){
-            CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
-          }
-        }
-        if (Randomizer > 2){
-          CreateBricks.grid[int(CreateBricks.BrickNum[n])] = 2;
-        }
-        for(int i = 0; i < 246; i++){
-          if(CreateBricks.grid[i] == 3 || CreateBricks.grid[i] == 5){
-            Powerup.Check = true;
-          }
-          if(CreateBricks.grid[i] == 4){
-            End.Check = true;
+          for(int i = 0; i < 246; i++){
+            if(CreateBricks.grid[i] == 3 || CreateBricks.grid[i] == 5){
+              Powerup.Check = true;
+            }
+            if(CreateBricks.grid[i] == 4){
+              End.Check = true;
+            }
           }
         }
       }
